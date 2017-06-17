@@ -1,0 +1,84 @@
+ConcatPDF history
+
+1.2.5 (2012-06-30)
+	GUI version
+		Preview window.
+
+1.2.4 (2012-06-21)
+		TIFF as output format is supported.
+		Fixed outline dialog.
+		
+1.2.3 (2012-06-16)
+		Multi-apge-TIFF is supported. 
+
+1.2.2 (2012-06-13)
+	This version works on .NET Framework 3.5 and J# runtime is no longer required.
+	for both versions
+		Converting image to PDF feature.
+
+1.1.11 (2008-12-09)
+	for GUI version 
+		Japanese captions were added.		
+
+1.1.10 (2006-10-17)
+	for CUI version
+		SplitPDF is added.
+		
+1.1.9 (2006-10-09)
+	for both versions
+		Fixed master password setting.
+		
+1.1.8 (2006-09-08)
+	for both versions
+		Fixed an error regarding network.
+		
+1.1.7 (2006-08-15)
+	This version is based on iText.NET 1.4.1 and fixed minor problems.
+	for window version
+		Fixed 'Remove All' feature.
+
+1.1.6 (2006-04-21)
+	This version is based on iText.NET 1.4 and fixed minor problems.
+	for command line version
+		GNU.Classpath.JAXP.dll and LibPDF.dll are moved to GAC. Now, you can store ConcatPDF.exe in any place.
+	for window version
+		ConcatPDFUI separated. It is no point for users.
+		Sorting files is supported. It can do by clicking header of file.
+
+1.1.4 (2005-04-23)
+	This version is based on iText .NET 1.3.0-3
+	for command line version
+		DecryptPDF is added.
+	for both versions 
+		This version fixes to read 128-bits encrypted PDF.
+		An option fitting is added to specify how to fit at the destination page of outlines.
+
+1.1.3 (2004-10-04)
+	for command line version
+		Viewer Preference setting of 1.1.2 does not work. This version fixes it.
+
+1.1.2 (2004-10-02)
+	This version is based on iText .NET 1.02-7.
+	for command line version
+		URI input is supported.
+		Specifying a page number from the last page is supported.
+	for both versions 
+		Viewer preferences are supported.
+
+1.1.1 (2004-08-08)
+	This version is based on iText .NET 1.02-6.
+	
+1.1.0 (2004-06-13)
+	for window version
+		Fixed a delete icon is not valid.
+		Delete temporary files at exit.
+		File dropping to an application icon is supported.
+		Keep window states in a registry.
+		Query owner password when encrypted files are added.
+	for both versions
+		Include file names as outline.
+	
+1.0.1
+	The first release.
+
+Copyright(c) 2004-2012 Kazuya Ujihara <ujihara.jp>. All rights reserved.

@@ -1,0 +1,15 @@
+﻿p { 
+	text-indent: 1em; 
+	margin-top:0; 
+	margin-bottom:0;
+}
+.style1 {
+	text-align: right;
+}
+.style2 {
+	text-align: center;
+}
+.style3 {
+	border-width: 1px;
+	width: 40%;
+}

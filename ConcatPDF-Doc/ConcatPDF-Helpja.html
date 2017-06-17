@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title>ConcatPDF ヘルプファイル</title>
+		<meta http-equiv="Content-Language" content="ja" />
+		<meta name="GENERATOR" content="Microsoft FrontPage 12.0" />
+		<meta name="ProgId" content="FrontPage.Editor.Document" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="ConcatPDF.css" />
+	</head>
+	<body>
+		<p class="style1"><a href="ConcatPDF-Helpja.html">Japanese</a> <a href="ConcatPDF-Helpen.html">
+				English</a></p>
+		<h1>ConcatPDF ヘルプファイル</h1>
+		<h2>ConcatPDF とは?</h2>
+		<p>PDF ファイルを結合するアプリケーションです。次の操作ができます。</p>
+		<ul>
+			<li>
+			PDF の結合
+			</li>
+			<li>
+			PDF の一部ページの抽出
+			</li>
+			<li>
+			PDF の暗号化
+			</li>
+			<li>
+			PDF の暗号化解除 (マスターパスワード必要)
+			</li>
+			<li>
+				PDF のビューの設定</li>
+            <li>
+				画像ファイルの PDF への変換</li>
+		</ul>
+		<p>CUI、GUI 両方のバージョンがあります。しおりも保持することができます。</p>
+		<h2>使い方</h2>
+		<ul>
+			<li>
+				<a href="#ConcatPDF-CUI">ConcatPDF CUI版</a>
+			</li>
+			<li>
+				<a href="#ConcatPDF-GUI">ConcatPDF GUI版</a>
+			</li>
+			<li>
+				<a href="#DecryptPDF">DecryptPDF</a></li>
+		</ul>
+		<h3><a name="ConcatPDF-CUI">CUI版</a></h3>
+		<p><samp>ConcatPDF [option]... {input-file}[#[n]-[m]]...</samp></p>
+<p>&nbsp;</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse" width="100%">
+			<tbody>
+			<tr>
+				<td class="style3"><samp>{input-file}[#[[B]{n}]-[[B]{m}]]</samp></td>
+				<td><samp>input-file</samp> の中の <samp>n</samp> ページから <samp>m</samp> ページを抽出します。<samp>n</samp>,
+					<samp>m</samp> に、Bのプレフィックスついているときは、最後のページから数えたページです。 URI も指定可能です。</td>
+			</tr>
+			<tr>
+				<td colspan="2">Options</td>
+			</tr>
+			<tr>
+				<td><samp>/outfile {file-name}</samp></td>
+				<td>結合した PDF ファイルを <samp>file-name</samp> というファイル名で保存します。</td>
+			</tr>
+			<tr>
+				<td><samp>/security {128|40} {user-password|&quot;&quot;} {master-password|&quot;&quot;} 
+						{permission}...</samp>
+					<p style="MARGIN-LEFT:2em; TEXT-INDENT:0px"><samp>permissions := ( printing | 
+							modify-contents | copy | modify-annotations | fill-in | screen-readers | 
+							assembly | degraded-printing )</samp></p>
+				</td>
+				<td>文書のセキュリティ設定。<br />
+					<samp>128</samp> --- 128-bit RC4<br />
+					<samp>40</samp> --- 40-bit RC4<br />
+					<samp>printing</samp> --- 印刷の許可<br />
+					<samp>modify-contents</samp> ---&nbsp; 文書の変更の許可<br />
+					<samp>copy</samp> --- コピー、抽出の許可<br />
+					<samp>modify-annotations</samp> --- 注釈、フォームフィードの作成の許可<br />
+					<samp>fill-in</samp> --- フォームフィールドの入力または署名の許可 (Acrobat 5 以降)<br />
+					<samp>screen-readers</samp> --- アクセシビリティを有効にすることの許可 (Acrobat 5 以降)<br />
+					<samp>assembly</samp> --- 文書アセンブリの変更の許可 (Acrobat 5 以降)<br />
+					<samp>degraded-printing</samp> --- 低解像度での印刷の許可 (Acrobat 5&nbsp; 以降)</td>
+			</tr>
+			<tr>
+				<td><samp>/viewer {preference}...</samp>
+					<p style="MARGIN-LEFT:2em; TEXT-INDENT:0px"><samp>preference := ( 
+							page-layout-single-page | page-layout-continuous | 
+							page-layout-continuous-facing-left | page-layout-continuous-facing-right | 
+							page-mode-use-none | page-mode-use-outlines | page-mode-use-thumbs | 
+							page-mode-full-screen | hide-toolbar hide-menubar | hide-window-UI | fit-window 
+							| center-window )</samp></p>
+				</td>
+				<td><samp>page-layout-single-page</samp> --- 単一ページ表示。<br />
+					<samp>page-layout-continuous</samp> --- 連続ページ表示。<br />
+					<samp>page-layout-continuous-facing-left </samp>--- 見開き。偶数ページは左。<br />
+					<samp>page-layout-continuous-facing-right</samp> --- 見開き。偶数ページは右。<br />
+					<samp>page-mode-use-none</samp> --- しおり、サムネールの非表示。<br />
+					<samp>page-mode-use-outlines</samp> --- しおりの表示。<br />
+					<samp>page-mode-use-thumbs</samp> --- サムネールの表示。<br />
+					<samp>page-mode-full-screen</samp> --- 全画面表示。<br />
+					<samp>hide-toolbar</samp> --- ツールバーの非表示。<br />
+					<samp>hide-menubar</samp> --- メニューの非表示。<br />
+					<samp>hide-window-UI</samp> --- UIに関するコントロール（スクロールバー、ナビゲーションコントロールなど）の非表示。<br />
+					<samp>fit-window</samp> --- 全体表示。<br />
+					<samp>center-window</samp> --- 文書をスクリーンの中央に表示。</td>
+			</tr>
+			<tr>
+				<td><samp>/add-outlines</samp></td>
+				<td>ファイル名をしおりとして使用します。</td>
+			</tr>
+			<tr>
+				<td><samp>/fitting {location}</samp><p style="MARGIN-LEFT:2em; TEXT-INDENT:0px">
+						<samp>location := ( XYZ | Fit | FitH | FitV | その他 )</samp></p>
+				</td>
+				<td><samp>/add-outlines </samp>が指定されている場合、その行き先のページの表示位置を指定します。<br />
+					<samp>XYZ</samp> --- 変更しません。<br />
+					<samp>Fit</samp> --- ページ全体が表示されます。<br />
+					<samp>FitH</samp> --- ページの高さに合せます。<br />
+					<samp>FitV</samp> --- ページの幅に合せます。<br />
+					詳しくは、PDF Reference の Interactive Features &gt; Document-Level Navigation &gt; 
+					Destinations をご覧ください。</td>
+			</tr>
+			<tr>
+				<td><samp>/copy-outlines</samp></td>
+				<td>もとのファイルから、しおりをコピーします。</td>
+			</tr>
+			<tr>
+				<td colspan="2">これ以下のオプションは、@file-name の中には記述することはできません。</td>
+			</tr>
+			<tr>
+				<td><samp>/charset {charset-name}</samp></td>
+				<td>使用する文字コード。</td>
+			</tr>
+			<tr>
+				<td><samp>/help</samp></td>
+				<td>コマンドラインオプションを表示する。</td>
+			</tr>
+			<tr>
+				<td><samp>@{file-name}</samp></td>
+				<td><samp>file-name</samp> の中のテキストを改行で区切り、オプションを指定します。非ANK文字を利用するときには、これより先に、<samp>/charset</samp>
+					オプションを指定してください。</td>
+			</tr>
+		</tbody>
+		</table>
+		<p>&nbsp;</p>
+		<p>コマンドラインで使う場合には、ConcatPDF をインストールしたディレクトリを Path に追加するか、ConcatPDF.exe 
+			をフルパスで指定する必要があります。</p>
+		<h4>例</h4>
+		<ul>
+			<li>
+				File1.pdf、File2.pdf、および File3.pdf の 3 ページ目から 6 ページ目を結合し、Merged.pdf 
+				というファイル名で保存する。
+				<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>ConcatPDF /outfile Merged.pdf 
+						File1.pdf File2.pdf File3.pdf#3-6</samp></p>
+			</li>
+			<li>
+				File1.pdf の最初のページと最後のページを抽出し、Truncated.pdf というファイル名で保存する。
+				<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>ConcatPDF /outfile 
+						Truncated.pdf File1.pdf#1,B1</samp></p>
+			</li>
+			<li>
+				http://www.ujihara.jp/iTextdotNET/examples から Chap0101.pdf および Chap0102.pdf 
+				をダウンロード、結合し、Merged.pdf というファイル名で保存する。
+				<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>ConcatPDF /outfile Merged.pdf <a href="http://itextdotnet.sourceforge.net/examples/Chap0101.pdf">
+							http://www.ujihara.jp/iTextdotNET/examples/Chap0101.pdf</a> <a href="http://itextdotnet.sourceforge.net/examples/Chap0102.pdf">
+							http://www.ujihara.jp/iTextdotNET/examples/Chap0102.pdf</a> </samp>
+				</p>
+			</li>
+			<li>
+				File1.pdf を印刷とアクセシビリティの許可をし、ユーザパスワードなし、マスターパスワード password で暗号化し、Encrypted.pdf 
+				というファイル名で保存する。<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>ConcatPDF 
+						/security 128 &quot;&quot; password printing</samp> <samp>screen-readers /outfile 
+						Encrypted.pdf File1.pdf</samp></p>
+			</li>
+		</ul>
+		<h3><a name="ConcatPDF-GUI">GUI版</a></h3>
+		<p>基本的には、結合したいファイルをドロップして、File→Save 
+				Asで保存します。リストのヘッダをクリックするとその列の要素にしたがって並び替えます。</p>
+		<h4>File -- Add</h4>
+		<p>結合したいファイルを加えます。</p>
+		<h4>File -- Save as</h4>
+		<p>ファイルを結合し保存します。</p>
+		<h4>File -- Outlines</h4>
+		<h5>File -- Outlines -- Add Outlines
+		</h5>
+		<p>ファイル名をしおりとして使用します。</p>
+		<h5>File -- Outlines -- Location and Zoom</h5>
+		<p>しおりをクリックしたときの、行き先のページの表示位置を指定します。</p>
+		<h5>File -- Outlines -- Copy Outlines</h5>
+		<p>もとのファイルのしおりをコピーします。</p>
+		<h4>File -- Viewer Preferences</h4>
+		<p>文書の表示方法に関する設定をします。</p>
+		<h4>File -- Document Security</h4>
+		<p>暗号化に対する設定をします。</p>
+		<h4>File -- Exit</h4>
+		<p>終了します。</p>
+		<h4>Edit -- Split</h4>
+		<p>選択されたファイルをページごとに分割します。</p>
+		<h4>Edit -- Remove</h4>
+		<p>選択されたファイルをリストから除きます。</p>
+		<h4>Edit -- Select All</h4>
+		<p>すべてのファイルを選択します。</p>
+		<h4>Edit -- Up, Down</h4>
+		<p>選択されたファイルの順序を変更します。</p>
+		<h4>View -- View by Acrobat</h4>
+		<p>結合されたファイルを表示します。</p>
+		<h4>View -- View This Item</h4>
+		<p>フォーカスを持ったファイルを表示します。</p>
+		<h3><a name="DecryptPDF">DecryptPDF</a></h3>
+		<p>DecryptPDF [option]... {input-file} {output-file}</p>
+		<p>&nbsp;</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse" bordercolor="#111111" width="100%" id="table1">
+			<tbody>
+			<tr>
+				<td colspan="2">Options</td>
+			</tr>
+			<tr>
+				<td><samp>/password {password}</samp></td>
+				<td><samp>password</samp> --- 文書のマスターパスワード</td>
+			</tr>
+			<tr>
+				<td><samp>/help</samp></td>
+				<td>コマンドラインオプションを表示する</td>
+			</tr>
+		</tbody>
+		</table>
+		<h3><a name="SplitPDF">SplitPDF</a></h3>
+		<p>SplitPDF [option]... {input-file}...</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse"  width="100%" id="Table2">
+			<tbody>
+			<tr>
+				<td colspan="2">Options</td>
+			</tr>
+			<tr>
+				<td><samp>/outdir {output-directory}</samp></td>
+				<td>分割したファイルを格納するディレクトリ（デフォルトは、デスクトップ＋ファイル名）</td>
+			</tr>
+			<tr>
+				<td><samp>/help</samp></td>
+				<td>コマンドラインオプションを表示する</td>
+			</tr>
+		</tbody>
+		</table>
+		<h2>その他</h2>
+		<p>This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 2.1 of the License, or (at your option) any later version.</p>
+		<p>This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.</p>
+		<p>You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA</p>
+		<p></p>
+		<p>このアプリケーションは、次のライブラリを利用しています。</p>
+		<blockquote>
+			<p><a href="http://sourceforge.net/projects/itextsharp/"><i>i</i>TextSharp</a> --- This library is distributed under AGPL.</p>
+		</blockquote>
+		<h3>連絡先</h3>
+		<p><a href="mailto:ujihara@aurora.dti.ne.jp?subject=iTextFront">mailto:ujihara@aurora.dti.ne.jp?subject=ConcatPDF</a></p>
+		<p>&#39;ConcatPDF&#39; をメールのタイトルに含めてください。</p>
+		<p>&nbsp;</p>
+		<p class="style2">Copyright(c) 2004-2008 Kazuya Ujihara &lt;ujihara.jp&gt;. All 
+			rights reserved.</p>
+	</body>
+</html>

@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+	<head>
+		<title>ConcatPDF</title>
+		<meta http-equiv="Content-Language" content="en-us" />
+		<meta name="GENERATOR" content="Microsoft FrontPage 12.0" />
+		<meta name="ProgId" content="FrontPage.Editor.Document" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="ConcatPDF.css" />
+	</head>
+	<body>
+		<p class="style1"><a href="ConcatPDF-Helpja.html">Japanese</a>&nbsp;<a href="ConcatPDF-Helpen.html">English</a></p>
+		<h1>ConcatPDF help file.</h1>
+		<h2>What is ConcatPDF ?</h2>
+		<p>ConcatPDF is the tool to concatenate PDF files. It can do the 
+		followings in one operation.</p>
+		<ul>
+			<li>
+			Concatenate PDF files.
+			</li>
+			<li>
+			Extract a part of PDF files.
+			</li>
+			<li>
+			Encrypt PDF files.
+			</li>
+			<li>
+			    Decrypt PDF files. (Master password is required.)
+			</li>
+			<li>
+				Set viewer setting./li&gt;
+            </li>
+            <li>
+				Convert image files to PDF and concatenate them.</li>
+		</ul>
+		<p>GUI version and CUI version are both available./p&gt;
+		</p>
+		<h2>How to Use it ?</h2>
+		<ul>
+			<li>
+				<a href="#CUI_version">CUI_version</a>
+			</li>
+			<li>
+				<a href="#GUI_version">GUI_version</a>
+			</li>
+			<li>
+				<a href="#DecryptPDF">DecryptPDF</a>
+			</li>
+			<li>
+				<a href="#SplitPDF">SplitPDF</a></li>
+		</ul>
+		<h3><a name="CUI_version">CUI version</a></h3>
+		<p><samp>ConcatPDF [option]... {input-file}[#[n]-[m]]...</samp></p>
+		<p>&nbsp;</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse" bordercolor="#111111" width="100%">
+			<tbody>
+			<tr>
+				<td width="40%"><samp>{input-file}[#[[B]{n}]-[[B]{m}]]</samp></td>
+				<td>Extract page <samp>n</samp> to page <samp>m</samp> in the <samp>
+				input-file</samp>. Count from last page when a prefix B is opted 
+				before <samp>n</samp> or <samp>m</samp>. URI is acceptable.</td>
+			</tr>
+			<tr>
+				<td width="40%" colspan="2">Options</td>
+			</tr>
+			<tr>
+				<td width="40%"><samp>/outfile {file-name}</samp></td>
+				<td>Save concatenated PDF file as <samp>file-name</samp>.</td>
+			</tr>
+			<tr>
+				<td width="40%"><samp>/security {128|40} {user-password|&quot;&quot;} 
+				{master-password|&quot;&quot;} {permission}...</samp>
+					<p style="MARGIN-LEFT:2em; TEXT-INDENT:0px"><samp>
+					permissions := ( printing | modify-contents | copy | 
+					modify-annotations | fill-in | screen-readers | assembly | 
+					degraded-printing )</samp></p>
+				</td>
+				<td>Security setting.<br />
+					<samp>128</samp> --- 128-bit RC4<br />
+					<samp>40</samp> --- 40-bit RC4<br />
+					<samp>printing </samp>--- Allow to print.<br />
+					<samp>modify-contents </samp>---&nbsp; Allow to modify.<br />
+					<samp>copy </samp>--- Allow to copy or extract.<br />
+					<samp>modify-annotations </samp>--- Allow to add or modify 
+				annotations or form fields.<br />
+					<samp>fill-in </samp>--- Allow to input form field and 
+				signature. (128-bit RC4 only)<br />
+					<samp>screen-readers </samp>--- Allow to enable 
+				accessibility. (128-bit RC4 only)<br />
+					<samp>assembly </samp>--- Allow to modify document assembly. 
+				(128-bit RC4 only)<br />
+					<samp>degraded-printing </samp>--- Allow to print degraded 
+				mode. (128-bit RC4 only)</td>
+			</tr>
+			<tr>
+				<td>
+					<p></p>
+					<samp>/viewer {preference}...</samp><p></p>
+					<p style="MARGIN-LEFT:2em; TEXT-INDENT:0px"><samp>preference 
+					:= ( page-layout-single-page | page-layout-continuous | 
+					page-layout-continuous-facing-left | 
+					page-layout-continuous-facing-right | page-mode-use-none | 
+					page-mode-use-outlines | page-mode-use-thumbs | 
+					page-mode-full-screen | hide-toolbar hide-menubar | 
+					hide-window-UI | fit-window | center-window )</samp></p>
+				</td>
+				<td><samp>page-layout-single-page</samp> --- Display one page at 
+				a time.<br />
+					<samp>page-layout-continuous</samp> --- Display the pages in 
+				one column.<br />
+					<samp>page-layout-continuous-facing-left </samp>--- Display 
+				the pages in two columns, with odd numbered pages on the left.<br />
+					<samp>page-layout-continuous-facing-right</samp> --- Display 
+				the pages in two columns, with odd numbered pages on the right.<br />
+					<samp>page-mode-use-none</samp> --- Neither document outline 
+				nor thumbnail images visible.<br />
+					<samp>page-mode-use-outlines</samp> --- Document outline 
+				visible.<br />
+					<samp>page-mode-use-thumbs</samp> --- Thumbnail images 
+				visible.<br />
+					<samp>page-mode-full-screen</samp> --- Full-screen mode, 
+				with no menu bar, window controls, or any other window visible.<br />
+					<samp>hide-toolbar</samp> --- A flag specifying whether to 
+				hide the viewer application's toolbars when the document is 
+				active.<br />
+					<samp>hide-menubar</samp> --- A flag specifying whether to 
+				hide the viewer application's menu bar when the document is 
+				active.<br />
+					<samp>hide-window-UI</samp> --- A flag specifying whether to 
+				hide user interface elements in the document's window (such as 
+				scroll bars and navigation controls), leaving only the 
+				document's contents displayed.<br />
+					<samp>fit-window</samp> --- A flag specifying whether to 
+				resize the document's window to fit the size of the first 
+				displayed page.<br />
+					<samp>center-window</samp> --- A flag specifying whether to 
+				position the document's window in the center of the screen.</td>
+			</tr>
+			<tr>
+				<td><samp>/add-outlines</samp></td>
+				<td>Add file names as outlines.</td>
+			</tr>
+			<tr>
+				<td><samp>/fitting {location}</samp><p style="MARGIN-LEFT:2em; TEXT-INDENT:0px">
+						<samp>location := ( XZY | Fit | FitH | FitV | ... )</samp></p>
+				</td>
+				<td>Specify the location of the document window on a destination 
+				page if <samp>/add-outlines is opted.<br />
+						XZY</samp> --- Retains.<br />
+					<samp>Fit</samp> --- Fit the entire page.<br />
+					<samp>FitH</samp> --- Fit the entire width of the page.<br />
+					<samp>FitV</samp> --- Fit the entire height of the page.<br />
+					See PDF Reference: Interactive Features &gt; Document-Level 
+				Navigation &gt; Destinations to know the details.</td>
+			</tr>
+			<tr>
+				<td><samp>/copy-outlines</samp></td>
+				<td>Copy bookmarks from the original files.</td>
+			</tr>
+			<tr>
+				<td width="40%" colspan="2">The following options can not be 
+				described in @file-name file.</td>
+			</tr>
+			<tr>
+				<td width="40%"><samp>/charset {charset-name}</samp></td>
+				<td>Specify character set.</td>
+			</tr>
+			<tr>
+				<td width="40%"><samp>/help</samp></td>
+				<td>Show help.</td>
+			</tr>
+			<tr>
+				<td width="40%"><samp>@{file-name}</samp></td>
+				<td>Specify options in plain text. Options are split by line 
+				feed.</td>
+			</tr>
+		</tbody>
+		</table>
+		<p>&nbsp;</p>
+		<p>Notice that the installed directory of ConcatPDF.exe is included in 
+		the environment variable PATH.
+		</p>
+		<h4>Examples</h4>
+		<ul>
+			<li>
+				Merges File1.pdf, File2.pdf, and the pages three to six in 
+				File3.pdf, and save as Merged.pdf.<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp> 
+				ConcatPDF /outfile Merged.pdf File1.pdf File2.pdf File3.pdf#3-6</samp></p>
+			</li>
+			<li>
+				Extracts the first and last page from File1.pdf, and save as 
+				Truncated.pdf.
+				<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>
+				ConcatPDF /outfile Truncated.pdf File1.pdf#1,B1</samp></p>
+			</li>
+			<li>
+				Downloads Chap0101.pdf and Chap0102.pdf from 
+				http://www.ujihara.jp/iTextdotNET/examples, concatenates them, 
+				and save as Merged.pdf.
+				<p style="MARGIN-TOP: 0.5em; MARGIN-BOTTOM: 0.5em"><samp>ConcatPDF /outfile Merged.pdf <a href="http://itextdotnet.sourceforge.net/examples/Chap0101.pdf">
+							http://www.ujihara.jp/iTextdotNET/examples/Chap0101.pdf</a> <a href="http://itextdotnet.sourceforge.net/examples/Chap0102.pdf">
+							http://www.ujihara.jp/iTextdotNET/examples/Chap0102.pdf</a> </samp>
+				</p>
+			</li>
+		</ul>
+		<h3><a name="GUI_version">GUI version</a></h3>
+		<h4>How to Use</h4>
+		<p>It's quite easy. Drag and drop PDF files you want to concatenate and 
+		save as the concatenated file.</p>
+		<H4>File -- Add</H4>
+		<p>Add files you want to concatenate.</p>
+		<h4>File -- Save as</h4>
+		<p>Save the concatenated file.</p>
+		<h4>File -- Outlines
+		</h4>
+		<h5>File -- Outlines -- Add Outlines
+		</h5>
+		<p>Flag to add file names to the document as outlines.</p>
+		<h5>File -- Outlines -- Location and Zoom</h5>
+		<p>Specify the location of the document window on a destination page.</p>
+		<h5>File -- Outlines -- Copy Outlines</h5>
+		<p>Flag to copy bookmarks including the original files.</p>
+		<h4>File -- Viewer Preferences</h4>
+		<p>Set options for viewer preferences.</p>
+		<h4>File -- Document Security</h4>
+		<p>Set options for document securities.</p>
+		<h4>File -- Exit</h4>
+		<p>Close this application.</p>
+		<h4>Edit -- Split</h4>
+		<p>Split selected files to page-by-page.</p>
+		<h4>Edit -- Remove</h4>
+		<p>Remove selected files from a list.</p>
+		<h4>Edit -- Select All</h4>
+		<p>Select all items in a list.</p>
+		<h4>Edit -- Up, Down/h4&gt;
+		</h4>
+		<p>Move selected files up or down in a list.</p>
+		<h4>View--View by Acrobat/h4&gt;
+		</h4>
+		<p>View a concatenated file.</p>
+		<h4>View--View This Item/h4&gt;
+		</h4>
+		<p>View a focused file.</p>
+		<h3><a name="DecryptPDF">DecryptPDF</a></h3><p>DecryptPDF [option]... {input-file} {output-file}</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse" width="100%" id="table1">
+			<tbody>
+			<tr>
+	Edit -- Up, Down</h4>
+		<p>Move selected files up or down in a list.sword}</sampView--View by Acrobat</h4>
+		<p>View a concatenated file.e.</td>
+			View--View This Item
+		</h4>
+		<p>View a focused file.elp.</td>
+			</tr>
+		</tbody>
+		</table>
+		<h3><a name="SplitPDF">SplitPDF</a></h3>
+		<p>SplitPDF [option]... {input-file}...</p>
+		<table border="1" cellpadding="2" style="BORDER-COLLAPSE:collapse" width="100%" id="Table2">
+			<tbody>
+			<tr>
+				<td colspan="2">Options</td>
+			</tr>
+			<tr>
+				<td><samp>/outdir {output-directory}</samp></td>
+				<td>A directory name to store splitted PDF files.</td>
+			</tr>
+			<tr>
+				<td><samp>/help</samp></td>
+				<td>Show help.</td>
+			</tr>
+		</tbody>
+		</table>
+		<h2>License etc.</h2>
+		<p>This library is free software; you can redistribute it and/or modify 
+		it under the terms of the GNU Lesser General Public License as published 
+		by the Free Software Foundation; either version 2.1 of the License, or 
+		(at your option) any later version.</p>
+		<p>This library is distributed in the hope that it will be useful, but 
+		WITHOUT ANY WARRANTY; without even the implied warranty of 
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser 
+		General Public License for more details.</p>
+		<p>You should have received a copy of the GNU Lesser General Public 
+		License along with this library; if not, write to the Free Software 
+		Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA</p>
+		<p></p>
+		<p>This application uses the following libraries.</p>
+		<blockquote>
+			<p><a href="http://sourceforge.net/projects/itextsharp/">iTextSharp</a> 
+			--- This library is distributed under AGPL.</p>
+		</blockquote>
+		<h3>Contact</h3>
+		<p><a href="mailto:ujihara@aurora.dti.ne.jp?subject=iTextFront">
+		mailto:ujihara@aurora.dti.ne.jp?subject=ConcatPDF</a></p>
+		<p>Include 'ConcatPDF' in subject, please.</p>
+		<p></p>
+		<p class="style2">CCopyright(c) 2004-2012 Kazuya Ujihara &lt;ujihara.jp&gt;. All rights reserved.</p>
+	</body>
+</html>
