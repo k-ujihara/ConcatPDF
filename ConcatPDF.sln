@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcatPDF", "ConcatPDF\ConcatPDF.csproj", "{A43D8B80-8D7C-4C71-AFD0-D77B9D777300}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibPDF", "LibPDF\LibPDF.csproj", "{3E32649E-4D1E-47F6-AAB3-00D5D773D2E5}"
