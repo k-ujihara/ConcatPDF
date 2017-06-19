@@ -1,5 +1,5 @@
 /*
-    Copyright 2003, 2004, 2012 by Kazuya Ujihara. 
+    Copyright 2003, 2004, 2012, 2017 by Kazuya Ujihara. 
   
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,12 +15,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Text;
 using System.Collections.Generic;
+using System;
 
 namespace Ujihara.PDF
 {
@@ -28,7 +28,7 @@ namespace Ujihara.PDF
     {
         public ListenPasswordHandler QueryPassword = null;
         private bool opened = false;
-        private PdfSmartCopy writer = null;
+        private PdfCopy writer = null;
         private int currPageNum = 1;
         private IList<Dictionary<string, object>> bookmarks = null;
 
@@ -98,10 +98,6 @@ namespace Ujihara.PDF
             {
                 AppendMain(reader, title, prs, option);
             }
-
-            PRAcroForm form = reader.AcroForm;
-            if (form != null)
-                writer.CopyAcroForm(reader);
         }
 
         private static PageRange[] NormalizePageRanges(PdfReader reader, PageRange[] pageRanges)
@@ -174,7 +170,8 @@ namespace Ujihara.PDF
             {
                 opened = true;
                 document = new Document(reader.GetPageSizeWithRotation(theFirstPage));
-                writer = new PdfSmartCopy(document, outStream);
+                writer = new PdfCopy(document, outStream);
+                writer.SetMergeFields();
 
                 if (ownerPassword != null)
                 {
@@ -233,14 +230,13 @@ namespace Ujihara.PDF
                     bookmarks.Add(m);
             }
 
-            for (i = theFirstPage; i <= reader.NumberOfPages; i++)
             {
-                if (appendOrNots[i])
-                {
-                    PdfImportedPage page = writer.GetImportedPage(reader, i);
-                    writer.AddPage(page);
-                    currPageNum++;
-                }
+                var pages = new List<int>();
+                for (int ii = 1; ii < appendOrNots.Length; ii++)
+                    if (appendOrNots[ii])
+                        pages.Add(ii);
+                reader.SelectPages(pages);
+                writer.AddDocument(reader);
             }
         }
 
@@ -273,7 +269,14 @@ namespace Ujihara.PDF
             if (bookmarks != null)
                 writer.Outlines = bookmarks;
             if (writer != null)
-                writer.Close();
+            {
+                try
+                {
+                    writer.Close();
+                }
+                catch (Exception)
+                { }
+            }
             base.Dispose();
         }
     }

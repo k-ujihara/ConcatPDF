@@ -34,6 +34,7 @@ using Ujihara.Lib;
 using iTextSharp.text.pdf.codec;
 using iTextSharp.text.exceptions;
 using System.Drawing.Imaging;
+using System.Collections.Generic;
 
 namespace Ujihara.ConcatPDF
 {
@@ -157,10 +158,6 @@ namespace Ujihara.ConcatPDF
 		}
 
 		#region Windows Form Designer generated code
-		/// <summary>
-		/// デザイナ サポートに必要なメソッドです。このメソッドの内容を
-		/// コード エディタで変更しないでください。
-		/// </summary>
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
@@ -762,26 +759,23 @@ namespace Ujihara.ConcatPDF
 
 			var outStream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
 			PdfConcatenator con = new PdfConcatenator(outStream, encryptInfo, viewerPreference);
+            var readers = new List<PdfReader>();
 			try
 			{
 				foreach (string filename in files)
 				{
                     con.QueryPassword = new PasswordListener(filename).QueryPassword;
-                    var reader = con.CreatePdfReader(filename, concatenatorOption);
-                    try
-                    {
-                        con.Append(reader, Path.GetFileNameWithoutExtension(filename), new[] { new PageRange(1, int.MaxValue) }, concatenatorOption);
-                    }
-                    finally
-                    {
-                        reader.Close();
-                    }
+                    PdfReader reader = con.CreatePdfReader(filename, concatenatorOption);
+                    readers.Add(reader);
+                    con.Append(reader, Path.GetFileNameWithoutExtension(filename), new[] { new PageRange(1, int.MaxValue) }, concatenatorOption);
 				}
 			}
 			finally
 			{
 				con.Close();
 				outStream.Close();
+                foreach (PdfReader reader in readers)
+                    reader.Close();
 			}
 
 			concatTempFile = fileName;
@@ -853,11 +847,15 @@ namespace Ujihara.ConcatPDF
 				Concatenate();
 				FileOperation.ExecuteFile(concatTempFile);
 			}
-			catch (Exception ee)
+#if !DEBUG
+            catch (Exception ee)
 			{
 				ErrorMessage.Show(ee);
 			}
-
+#endif
+            finally
+            {
+            }
 		}
 
 		private void menuItemViewThisItem_Click(object sender, System.EventArgs e)
@@ -881,8 +879,8 @@ namespace Ujihara.ConcatPDF
 
 		private void menuItemUpOrDown_Click(object sender, System.EventArgs e)
 		{
-			try 
-			{
+            try
+            {
 				int direct = 0;
 				if (sender == menuItemUp)
 				{
@@ -897,13 +895,18 @@ namespace Ujihara.ConcatPDF
 
                 this.fileListBox1.MoveSelectedItems(direct);
 			}
+#if !DEBUG
 			catch (Exception ee) 
 			{
 				ErrorMessage.Show(ee);
 			}			
-		}
+#endif
+            finally
+            {
+            }
+        }
 
-		private void menuItemSplit_Click(object sender, System.EventArgs e)
+        private void menuItemSplit_Click(object sender, System.EventArgs e)
 		{
 			try 
 			{
@@ -938,10 +941,12 @@ namespace Ujihara.ConcatPDF
                     }
                 }
 			}
+#if !DEBUG
 			catch (Exception ee) 
 			{
 				ErrorMessage.Show(ee);
 			}
+#endif
 			finally
 			{
 				notifyTouch();

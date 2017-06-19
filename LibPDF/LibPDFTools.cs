@@ -21,6 +21,7 @@ using System;
 using System.IO;
 using System.Net;
 using iTextSharp.text.pdf.codec;
+using iTextSharp.text.exceptions;
 
 namespace Ujihara.PDF
 {
@@ -109,8 +110,7 @@ namespace Ujihara.PDF
             PdfReader reader = null;
             try
             {
-                reader = new PdfReader(bytes);
-                
+                reader = new PdfReader(bytes);                
             }
             catch (BadPasswordException ex)
             {
@@ -156,8 +156,30 @@ namespace Ujihara.PDF
             var isp = wr.GetResponse().GetResponseStream();
             byte[] bytes = null;
             try
-            {
-                bytes = RandomAccessFileOrArray.InputStreamToArray(isp);
+            {                
+                var a = new RandomAccessFileOrArray(isp);
+                try
+                {
+                    using (var aa = new MemoryStream())
+                    {
+                        int b;
+                        while ((b = a.Read()) != -1)
+                        {
+                            aa.WriteByte((byte)b);
+                        }
+                        bytes = aa.ToArray();
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        a.Close();
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
             finally
             {

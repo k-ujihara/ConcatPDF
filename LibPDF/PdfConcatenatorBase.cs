@@ -61,12 +61,19 @@ namespace Ujihara.PDF
         public virtual void Dispose()
         {
             if (document != null)
-                document.Close();
+            {
+                try
+                {
+                    document.Close();
+                }
+                catch (Exception)
+                { }
+            }
         }
 
         public void Close()
         {
-            Dispose();
+            this.Dispose();
         }
     }
 }
