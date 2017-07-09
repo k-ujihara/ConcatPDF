@@ -17,45 +17,26 @@
 
 using System;
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using iText.Kernel.Pdf;
 
 namespace Ujihara.PDF
 {
     public abstract class PdfConcatenatorBase : IDisposable
     {
-        protected Document document = null;
+        protected PdfDocument document = null;
         protected Stream outStream = null;
+        protected PdfEncryptInfo EncryptInfo { get; set; }
+        protected PdfName PageLayout { get; set; }
+        protected PdfName PageMode { get; set; }
+        protected PdfViewerPreferences ViewerPreference { get; set; }
 
-        protected bool encryptionStrength;
-        protected String userPassword = null;
-        protected String ownerPassword = null;
-        protected int permissions = 0;
-        protected int viewerPreference = 0;
-
-        protected void Setup(Stream outStream, int encryptionLength, string userPassword, string ownerPassword, int permissions, int viewerPreference)
+        protected void Setup(Stream outStream, PdfEncryptInfo encryptInfo, PageViewerPreferences viewerPreference)
         {
             this.outStream = outStream;
-
-            if (encryptionLength != 0)
-            {
-                switch (encryptionLength)
-                {
-                    case 40:
-                        this.encryptionStrength = PdfWriter.STRENGTH40BITS;
-                        break;
-                    case 128:
-                        this.encryptionStrength = PdfWriter.STRENGTH128BITS;
-                        break;
-                    default:
-                        throw new ArgumentException("Illegal encryption strength (" + encryptionLength + ").");
-                }
-                this.userPassword = userPassword;
-                this.ownerPassword = ownerPassword;
-                this.permissions = permissions;
-            }
-
-            this.viewerPreference = viewerPreference;
+            this.EncryptInfo = encryptInfo;
+            this.PageLayout = viewerPreference.PageLayout;
+            this.PageMode = viewerPreference.PageMode;
+            this.ViewerPreference = viewerPreference.ViewerPreferences;
         }
 
         public virtual void Dispose()

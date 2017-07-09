@@ -15,25 +15,41 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using iText.Kernel.Pdf;
+
 namespace Ujihara.PDF
 {
     public class PdfEncryptInfo
     {
-        public string ownerPassword { get; set; }
-        public string userPassword { get; set; }
-        public int encryptionLength { get; set; }
-        public int permissions { get; set; }
+        public bool Enabled { get; set; }
+        public string OwnerPassword { get; set; }
+        public string UserPassword { get; set; }
+
+        /// <seealso cref="EncryptionConstants"/>
+        public int Permission { get; set; }
+
+        /// <summary>
+        /// Encrytion type
+        /// </summary>
+        /// <seealso cref="EncryptionConstants"/>
+        public int Encryption { get; set; }
 
         public PdfEncryptInfo()
         {
+            Enabled = false;
+            OwnerPassword = null;
+            UserPassword = null;
+            Permission = 0;
+            Encryption = 0;
         }
 
-        public PdfEncryptInfo(int encryptionLength, string userPassword, string ownerPassword, int permissions)
+        public PdfEncryptInfo(int permission, int encryption, string userPassword, string ownerPassword)
         {
-            this.encryptionLength = encryptionLength;
-            this.userPassword = userPassword;
-            this.ownerPassword = ownerPassword;
-            this.permissions = permissions;
+            this.Enabled = true;
+            this.Permission = permission;
+            this.Encryption = encryption;
+            this.UserPassword = userPassword;
+            this.OwnerPassword = ownerPassword;
         }
     }
 }

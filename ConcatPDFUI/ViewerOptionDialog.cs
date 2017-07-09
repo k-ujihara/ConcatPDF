@@ -3,8 +3,9 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-
-using iTextSharp.text.pdf;
+using iText.Kernel.Pdf;
+using static iText.Kernel.Pdf.PdfViewerPreferences;
+using Ujihara.PDF;
 
 namespace Ujihara.ConcatPDF
 {
@@ -491,7 +492,6 @@ namespace Ujihara.ConcatPDF
 			this.checkFitWindow.Text = resources.GetString("checkFitWindow.Text");
 			this.checkFitWindow.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("checkFitWindow.TextAlign")));
 			this.checkFitWindow.Visible = ((bool)(resources.GetObject("checkFitWindow.Visible")));
-			this.checkFitWindow.CheckedChanged += new System.EventHandler(this.checkFitWindow_CheckedChanged);
 			// 
 			// checkCenterWindow
 			// 
@@ -565,7 +565,6 @@ namespace Ujihara.ConcatPDF
 			this.buttonCancel.Text = resources.GetString("buttonCancel.Text");
 			this.buttonCancel.TextAlign = ((System.Drawing.ContentAlignment)(resources.GetObject("buttonCancel.TextAlign")));
 			this.buttonCancel.Visible = ((bool)(resources.GetObject("buttonCancel.Visible")));
-			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
 			// 
 			// ViewerOptionDialog
 			// 
@@ -613,65 +612,72 @@ namespace Ujihara.ConcatPDF
 			this.DialogResult = DialogResult.OK;
 		}
 
-		private void buttonCancel_Click(object sender, System.EventArgs e)
-		{
-		
-		}
+        public PdfName PageLayout
+        {
+            get
+            {
+                PdfName pageLayout = null;
+                if (radioSinglePage.Checked) pageLayout = PdfName.SinglePage;
+                if (radioContinuous.Checked) pageLayout = PdfName.OneColumn;
+                if (radioContinuousLeft.Checked) pageLayout = PdfName.TwoColumnLeft;
+                if (radioContinuousRight.Checked) pageLayout = PdfName.TwoColumnRight;
+                return pageLayout;
+            }
 
-		private void checkFitWindow_CheckedChanged(object sender, System.EventArgs e)
-		{
-		
-		}
+            set
+            {
+                radioDontTouch.Checked = true;
+                radioSinglePage.Checked = value == PdfName.SinglePage;
+                radioContinuous.Checked = value == PdfName.OneColumn;
+                radioContinuousLeft.Checked = value  == PdfName.TwoColumnLeft;
+                radioContinuousRight.Checked = value == PdfName.TwoColumnRight;
+            }
+        }
 
-		public int ViewerPreference
+        public PageViewerPreferences ViewerPreference
 		{
 			get
 			{
-				int pref = 0;
-				if (radioSinglePage.Checked) pref |= PdfWriter.PageLayoutSinglePage;
-				if (radioContinuous.Checked) pref |= PdfWriter.PageLayoutOneColumn;
-				if (radioContinuousLeft.Checked) pref |= PdfWriter.PageLayoutTwoColumnLeft;
-				if (radioContinuousRight.Checked) pref |= PdfWriter.PageLayoutTwoColumnRight;
-				if (checkPMShowNone.Checked) pref |= PdfWriter.PageModeUseNone;
-				if (checkShowOutlines.Checked) pref |= PdfWriter.PageModeUseOutlines;
-				if (checkShowThumbs.Checked) pref |= PdfWriter.PageModeUseThumbs;
-				if (checkFullScreen.Checked) 
-				{
-					pref |= PdfWriter.PageModeFullScreen;
-					if (checkPMShowNone.Checked) pref |= PdfWriter.NonFullScreenPageModeUseNone;
-					if (checkShowOutlines.Checked) pref |= PdfWriter.NonFullScreenPageModeUseOutlines;
-					if (checkShowThumbs.Checked) pref |= PdfWriter.NonFullScreenPageModeUseThumbs;
-				}
-				if (checkHideToolbar.Checked) pref |= PdfWriter.HideToolbar;
-				if (checkHideMenubar.Checked) pref |= PdfWriter.HideMenubar;
-				if (checkHideWindowUI.Checked) pref |= PdfWriter.HideWindowUI;
-				if (checkFitWindow.Checked) pref |= PdfWriter.FitWindow;
-				if (checkCenterWindow.Checked) pref |= PdfWriter.CenterWindow;
+                PageViewerPreferences viewerPreference = new PageViewerPreferences();
 
-				return pref;
+                if (radioSinglePage.Checked) viewerPreference.PageLayout = PdfName.SinglePage;
+                if (radioContinuous.Checked) viewerPreference.PageLayout = PdfName.OneColumn;
+                if (radioContinuousLeft.Checked) viewerPreference.PageLayout = PdfName.TwoColumnLeft;
+                if (radioContinuousRight.Checked) viewerPreference.PageLayout = PdfName.TwoColumnRight;
+
+                if (checkFullScreen.Checked)
+                {
+                    viewerPreference.PageMode = PdfName.FullScreen;
+                    if (checkPMShowNone.Checked) viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_NONE;
+                    if (checkShowOutlines.Checked) viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_OUTLINES;
+                    if (checkShowThumbs.Checked) viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_THUMBS;
+                }
+
+                if (checkHideToolbar.Checked) viewerPreference.HideToolbar = true;
+                if (checkHideMenubar.Checked) viewerPreference.HideMenubar = true; 
+                if (checkHideWindowUI.Checked) viewerPreference.HideWindowUI = true;
+                if (checkFitWindow.Checked) viewerPreference.FitWindow = true;
+                if (checkCenterWindow.Checked) viewerPreference.CenterWindow = true;
+                return viewerPreference;
 			}
+
 			set
 			{
-				radioDontTouch.Checked = true;
-				radioSinglePage.Checked = (value & PdfWriter.PageLayoutSinglePage) != 0;
-				radioContinuous.Checked = (value & PdfWriter.PageLayoutOneColumn) != 0;
-				radioContinuousLeft.Checked = (value & PdfWriter.PageLayoutTwoColumnLeft) != 0;
-				radioContinuousRight.Checked = (value & PdfWriter.PageLayoutTwoColumnRight) != 0;
-				checkPMShowNone.Checked = (value & PdfWriter.PageModeUseNone) != 0;
-				checkShowOutlines.Checked = (value & PdfWriter.PageModeUseOutlines) != 0;
-				checkShowThumbs.Checked = (value & PdfWriter.PageModeUseThumbs) != 0;
-				if ((value & PdfWriter.PageModeFullScreen) != 0)
-				{
-					checkFullScreen.Checked = true;
-					checkPMShowNone.Checked |= (value & PdfWriter.NonFullScreenPageModeUseNone) != 0;
-					checkShowOutlines.Checked |= (value & PdfWriter.NonFullScreenPageModeUseOutlines) != 0;
-					checkShowThumbs.Checked |= (value & PdfWriter.NonFullScreenPageModeUseThumbs) != 0;
-				}
-				checkHideToolbar.Checked = (value & PdfWriter.HideToolbar) != 0;
-				checkHideMenubar.Checked = (value & PdfWriter.HideMenubar) != 0;
-				checkHideWindowUI.Checked = (value & PdfWriter.HideWindowUI) != 0;
-				checkFitWindow.Checked = (value & PdfWriter.FitWindow) != 0;
-				checkCenterWindow.Checked = (value & PdfWriter.CenterWindow) != 0;
+                radioDontTouch.Checked = true;
+                radioSinglePage.Checked = value.PageLayout == PdfName.SinglePage;
+                radioContinuous.Checked = value.PageLayout == PdfName.OneColumn;
+                radioContinuousLeft.Checked = value.PageLayout == PdfName.TwoColumnLeft;
+                radioContinuousRight.Checked = value.PageLayout == PdfName.TwoColumnRight;
+
+                checkPMShowNone.Checked = value.NonFullScreenPageMode == PdfViewerPreferencesConstants.USE_NONE;
+                checkShowOutlines.Checked = value.NonFullScreenPageMode == PdfViewerPreferencesConstants.USE_OUTLINES;
+                checkShowThumbs.Checked = value.NonFullScreenPageMode == PdfViewerPreferencesConstants.USE_THUMBS;
+
+                checkHideToolbar.Checked = value.HideToolbar;
+                checkHideMenubar.Checked = value.HideMenubar;
+                checkHideWindowUI.Checked = value.HideWindowUI;
+                checkFitWindow.Checked = value.FitWindow;
+                checkCenterWindow.Checked = value.CenterWindow;
 			}
 		}
 	}

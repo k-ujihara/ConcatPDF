@@ -15,13 +15,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using iText.IO.Image;
+using iText.Kernel.Crypto;
+using iText.Kernel.Font;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 using System;
 using System.IO;
 using System.Net;
-using iTextSharp.text.pdf.codec;
-using iTextSharp.text.exceptions;
 
 namespace Ujihara.PDF
 {
@@ -48,39 +51,14 @@ namespace Ujihara.PDF
             return enc;
         }
 
-        static public BaseFont GetBaseFont(string familyName)
+        static public PdfFont GetBaseFont(string familyName)
         {
             if (familyName == null)
                 familyName = "";
             string enc = LibPDFTools.GetDefaultEncoding(familyName);
-            BaseFont baseFont = BaseFont.CreateFont(familyName, enc, BaseFont.NOT_EMBEDDED);
+            PdfFont baseFont = PdfFontFactory.CreateFont(familyName, enc, false);
             return baseFont;
-        }
-
-        static public Font GetFont(string familyName, float size, int style)
-        {
-            if (familyName == null)
-                familyName = "";
-            Font font;
-            if (familyName.Trim() == "")
-            {
-
-                font = new Font(Font.FontFamily.UNDEFINED, size, style);
-            }
-            else
-            {
-                Font.FontFamily familyIndex = Font.GetFamilyIndex(familyName);
-                if (familyIndex != Font.FontFamily.UNDEFINED)
-                {
-                    font = new Font(familyIndex, size, style);
-                }
-                else
-                {
-                    font = new Font(GetBaseFont(familyName), size, style);
-                }
-            }
-            return font;
-        }
+        }        
 
         public static Uri ToUri(string filenameOrUrl)
         {
@@ -99,28 +77,31 @@ namespace Ujihara.PDF
             return inUri;
         }
 
-        public static PdfReader CreatePdfReader(string filename, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
+        public static PdfDocument CreatePdfReader(string filename, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
         {
-            var bytes = ToUri(filename);
-            return CreatePdfReader(bytes, passwordListener, requiresOwnerPermission);
+            var uri = ToUri(filename);
+            return CreatePdfReader(uri, passwordListener, requiresOwnerPermission);
         }
 
-        public static PdfReader CreatePdfReader(byte[] bytes, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
+        public static PdfDocument CreatePdfReader(byte[] bytes, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
         {
-            PdfReader reader = null;
+            PdfReader rreader = null;
             try
             {
-                reader = new PdfReader(bytes);                
+                rreader = new PdfReader(new MemoryStream(bytes));
             }
             catch (BadPasswordException ex)
             {
-                reader = ListenPassword(bytes, passwordListener, reader, ex);
+                rreader = ListenPassword(bytes, passwordListener, rreader, ex);
             }
 
-            while (requiresOwnerPermission && !reader.IsOpenedWithFullPermissions)
+            while (requiresOwnerPermission && !rreader.IsOpenedWithFullPermission())
             {
-                reader = ListenPassword(bytes, passwordListener, reader, new BadPasswordException("Owner password is required."));
+                rreader = ListenPassword(bytes, passwordListener, rreader, new BadPasswordException("Owner password is required."));
             }
+
+            PdfDocument reader = null;
+            reader = new PdfDocument(rreader);
 
             return reader;
         }
@@ -135,7 +116,9 @@ namespace Ujihara.PDF
                 throw ex;
             try
             {
-                reader = new PdfReader(bytes, password);
+                ReaderProperties prop = new ReaderProperties();
+                prop.SetPassword(password);
+                reader = new PdfReader(new MemoryStream(bytes), prop);
             }
             catch (BadPasswordException)
             {
@@ -153,126 +136,96 @@ namespace Ujihara.PDF
         {
             WebRequest wr = WebRequest.Create(uri);
             wr.Credentials = CredentialCache.DefaultCredentials;
-            var isp = wr.GetResponse().GetResponseStream();
-            byte[] bytes = null;
-            try
-            {                
-                var a = new RandomAccessFileOrArray(isp);
-                try
-                {
-                    using (var aa = new MemoryStream())
-                    {
-                        int b;
-                        while ((b = a.Read()) != -1)
-                        {
-                            aa.WriteByte((byte)b);
-                        }
-                        bytes = aa.ToArray();
-                    }
-                }
-                finally
-                {
-                    try
-                    {
-                        a.Close();
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-            }
-            finally
+            using (var res = wr.GetResponse())
+            using (var isp = res.GetResponseStream())
             {
-                try
+                byte[] bytes = null;
+                using (var aa = new MemoryStream())
                 {
-                    isp.Close();
-                }
-                catch (Exception)
-                {
+                    int b;
+                    while ((b = isp.ReadByte()) != -1)
+                    {
+                        aa.WriteByte((byte)b);
+                    }
+                    bytes = aa.ToArray();
+
+                    return bytes;
                 }
             }
-            return bytes;
         }
 
-        public static PdfReader CreatePdfReader(Uri uri, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
+        public static PdfDocument CreatePdfReader(Uri uri, ListenPasswordHandler passwordListener, bool requiresOwnerPermission)
         {
             var bytes = GetBytes(uri);
             return CreatePdfReader(bytes, passwordListener, requiresOwnerPermission);
         }
 
-        internal static PdfReader CreatePdfReaderFromTiff(byte[] sourceBytes, Rectangle pageSize, Margins margins)
+        internal static PdfDocument CreatePdfReaderFromTiff(byte[] sourceBytes, PageSize pageSize, Margins margins)
         {
-            using (var document = new Document())
+            using (var stream = new MemoryStream())
             {
-                using (var stream = new MemoryStream())
+                PdfDocument pdfDoc = new PdfDocument(new PdfWriter(stream));
+                try
                 {
-                    using (var writer = PdfWriter.GetInstance(document, stream))
+                    Document doc = null;
+
+                    using (var ra = new MemoryStream(sourceBytes))
                     {
-                        var ra = new RandomAccessFileOrArray(sourceBytes);
-                        int numberOfPages = TiffImage.GetNumberOfPages(ra);
+                        int numberOfPages = TiffImageData.GetNumberOfPages(sourceBytes);
                         for (int i = 1; i <= numberOfPages; i++)
                         {
-                            var image = TiffImage.GetTiffImage(ra, i);
-                            Rectangle currentPageSize = pageSize == null ? new Rectangle(image.ScaledWidth + margins.Left + margins.Right + 1, image.ScaledHeight + margins.Top + margins.Bottom + 1) : pageSize;
-                            document.SetPageSize(currentPageSize);
-                            document.SetMargins(margins.Left, margins.Right, margins.Top, margins.Bottom);
-                            if (i == 1)
-                            {
-                                document.Open();
-                            }
-                            else
-                            {
-                                document.NewPage();
-                            }
-                            if (pageSize != null)
-                            {
-                                float width = pageSize.Width - (margins.Left + margins.Right + 1);
-                                float height = pageSize.Height - (margins.Top + margins.Bottom + 1);
-                                if (width <= 0 || height <= 0)
-                                    throw new IOException("Margin is too big.");
-                                image.ScaleToFit(width, height);
-                            }
-                            document.Add(image);
+                            var image = new Image(ImageDataFactory.CreateTiff(sourceBytes, true, i, true));
+                             PageSize currentPageSize = pageSize == null ? new PageSize(image.GetImageScaledWidth() + margins.Left + margins.Right + 1, image.GetImageScaledHeight() + margins.Top + margins.Bottom + 1) : pageSize;
+
+                            if (doc == null)
+                                doc = new Document(pdfDoc, currentPageSize);
+
+                            pdfDoc.AddNewPage(currentPageSize);
+                            doc.SetMargins(margins.Left, margins.Right, margins.Top, margins.Bottom);
+                            doc.Add(image);
                         }
-                        document.Close();
-                        ra.Close();
                     }
-                    var pdfArray = stream.ToArray();
-                    return new PdfReader(pdfArray);
+                    doc.Close();
                 }
+                finally
+                {
+                    pdfDoc.Close();
+                }
+
+                var pdfArray = stream.ToArray();
+                var r = new PdfReader(new MemoryStream(pdfArray));
+                return new PdfDocument(r);
             }
         }
-               
-        public static PdfReader CreatePdfReaderFromImage(byte[] sourceBytes, Rectangle pageSize, Margins margins)
+
+        public static PdfDocument CreatePdfReaderFromImage(byte[] sourceBytes, PageSize pageSize, Margins margins)
         {
-            Image image = Image.GetInstance(sourceBytes);
+            Image image = new Image(ImageDataFactory.Create(sourceBytes));
             if (pageSize == null)
             {
-                pageSize = new Rectangle(image.ScaledWidth + margins.Left + margins.Right + 1, image.ScaledHeight + margins.Top + margins.Bottom + 1);
+                pageSize = new PageSize(image.GetImageScaledWidth() + margins.Left + margins.Right + 1, image.GetImageScaledHeight() + margins.Top + margins.Bottom + 1);
             }
             else
             {
                 //}‚Ì‘å‚«‚³
-                float width = pageSize.Width - (margins.Left + margins.Right + 1);
-                float height = pageSize.Height - (margins.Top + margins.Bottom + 1);
+                float width = pageSize.GetWidth() - (margins.Left + margins.Right + 1);
+                float height = pageSize.GetHeight() - (margins.Top + margins.Bottom + 1);
                 if (width <= 0 || height <= 0)
                     throw new IOException("Margin is too big.");
                 image.ScaleToFit(width, height);
             }
 
-            using (var document = new Document(pageSize, margins.Left, margins.Right, margins.Top, margins.Bottom))
+            using (var stream = new MemoryStream())
             {
-                using (var stream = new MemoryStream())
-                {
-                    using (var writer = PdfWriter.GetInstance(document, stream))
-                    {
-                        document.Open();
-                        document.Add(image);
-                        document.Close();
-                    }
-                    var pdfArray = stream.ToArray();
-                    return new PdfReader(pdfArray);
-                }
+                PdfDocument pdfDoc = new PdfDocument(new PdfWriter(stream));
+                var document = new Document(pdfDoc, pageSize);
+                document.SetMargins(margins.Left, margins.Right, margins.Top, margins.Bottom);
+                document.Add(image);
+                document.Close();
+
+                var pdfArray = stream.ToArray();
+                var r = new PdfReader(new MemoryStream(pdfArray));
+                return new PdfDocument(r);
             }
         }
 

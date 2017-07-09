@@ -15,15 +15,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
-
-
 using System;
-using System.Collections;
 using System.IO;
-using System.Text;
-
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using Ujihara.PDF;
 
 namespace Ujihara.ConcatPDF

@@ -15,26 +15,18 @@
  */
 
 using System;
-using System.Drawing;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 using System.Diagnostics;
-
-using System.Linq;
 using System.IO;
 using System.Text;
 using Microsoft.Win32;
-
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using Ujihara.PDF;
 using Ujihara.Lib;
-using iTextSharp.text.pdf.codec;
-using iTextSharp.text.exceptions;
-using System.Drawing.Imaging;
 using System.Collections.Generic;
+using iText.IO.Image;
+using iText.IO.Source;
+using iText.Kernel.Pdf;
 
 namespace Ujihara.ConcatPDF
 {
@@ -546,8 +538,8 @@ namespace Ujihara.ConcatPDF
 
 		private string[] Arguments = null;
 		private PdfEncryptInfo encryptInfo = new PdfEncryptInfo();
-		private int viewerPreference = 0;
-		private Stack tempFSCol = new Stack();
+        private PageViewerPreferences viewerPreference = new PageViewerPreferences();
+        private Stack tempFSCol = new Stack();
 		private PdfConcatenatorOption concatenatorOption = new PdfConcatenatorOption();
         private float DPI = 300f;
 
@@ -658,16 +650,23 @@ namespace Ujihara.ConcatPDF
 
         private static int TiffPagesCouter(string filename)
         {
-            var ra = new RandomAccessFileOrArray(filename);
-            var n = TiffImage.GetNumberOfPages(ra);
-            ra.Close();
+            byte[] bytes;
+            using (var ss = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            using (var mm = new MemoryStream())
+            {
+                int c;
+                while ((c = ss.ReadByte()) != -1)
+                    mm.WriteByte((byte)c);
+                bytes = mm.ToArray();
+            }
+            var n = TiffImageData.GetNumberOfPages(bytes);
             return n;
         }
 
         private static int PdfPagesCounter(string filename)
         {
             var r = LibPDFTools.CreatePdfReader(filename, new PasswordListener(filename).QueryPassword, false);
-            return r.NumberOfPages;
+            return r.GetNumberOfPages();
         }
 
 		private void menuItemExit_Click(object sender, System.EventArgs e)
@@ -758,14 +757,14 @@ namespace Ujihara.ConcatPDF
 			tempFSCol.Push(fileName);
 
 			var outStream = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-			PdfConcatenator con = new PdfConcatenator(outStream, encryptInfo, viewerPreference);
-            var readers = new List<PdfReader>();
+			PdfConcatenator con = new PdfConcatenator(outStream, null,  viewerPreference);
+            var readers = new List<PdfDocument>();
 			try
 			{
 				foreach (string filename in files)
 				{
                     con.QueryPassword = new PasswordListener(filename).QueryPassword;
-                    PdfReader reader = con.CreatePdfReader(filename, concatenatorOption);
+                    var reader = con.CreatePdfReader(filename, concatenatorOption);
                     readers.Add(reader);
                     con.Append(reader, Path.GetFileNameWithoutExtension(filename), new[] { new PageRange(1, int.MaxValue) }, concatenatorOption);
 				}
@@ -774,7 +773,7 @@ namespace Ujihara.ConcatPDF
 			{
 				con.Close();
 				outStream.Close();
-                foreach (PdfReader reader in readers)
+                foreach (var reader in readers)
                     reader.Close();
 			}
 
@@ -803,18 +802,12 @@ namespace Ujihara.ConcatPDF
 		private void menuItemDocumentSecurity_Click(object sender, System.EventArgs e)
 		{
 			EncryptOptionDialog dlg = new EncryptOptionDialog();
-			dlg.EncryptionLength = encryptInfo.encryptionLength;
-			dlg.UserPassword = encryptInfo.userPassword;
-			dlg.MasterPassword = encryptInfo.ownerPassword;
-			dlg.Permissions = encryptInfo.permissions;
+			dlg.Info = encryptInfo;
 			if (dlg.ShowDialog() == DialogResult.OK) 
 			{
 				notifyTouch();
 			
-				encryptInfo.ownerPassword = dlg.MasterPassword;
-				encryptInfo.userPassword = dlg.UserPassword;
-				encryptInfo.encryptionLength = dlg.EncryptionLength;
-				encryptInfo.permissions = dlg.Permissions;
+				encryptInfo = dlg.Info;
 			}
 		}
 
@@ -923,9 +916,14 @@ namespace Ujihara.ConcatPDF
                     {
                         splited = spliter.Split(fullPath, storeFolder, Path.GetFileName(fullPath) + ".");
                     }
+#if !DEBUG
                     catch (Exception)
                     {
                         // ignore
+                    }
+#endif
+                    finally
+                    {
                     }
                     if (splited != null)
                     {

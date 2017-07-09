@@ -16,11 +16,12 @@
  */
 
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System.Text;
 using System.Collections.Generic;
 using System;
+using iText.Kernel.Utils;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Navigation;
 
 namespace Ujihara.PDF
 {
@@ -28,36 +29,29 @@ namespace Ujihara.PDF
     {
         public ListenPasswordHandler QueryPassword = null;
         private bool opened = false;
-        private PdfCopy writer = null;
+        private PdfMerger merger = null;
+        private PdfWriter writer = null;
         private int currPageNum = 1;
         private IList<Dictionary<string, object>> bookmarks = null;
 
         public PdfConcatenator(Stream outStream)
-            : this(outStream, (PdfEncryptInfo)null, 0)
+            : this(outStream, (PdfEncryptInfo)null)
         {
         }
 
         public PdfConcatenator(Stream outStream, PdfEncryptInfo encryptInfo)
-            : this(outStream, encryptInfo, 0)
+            : this(outStream, encryptInfo, null)
         {
         }
 
-        public PdfConcatenator(Stream outStream, int viewerPreference)
-            : this(outStream, (PdfEncryptInfo)null, viewerPreference)
+        public PdfConcatenator(Stream outStream, PdfEncryptInfo encryptInfo, PageViewerPreferences viewerPreference)
         {
-        }
-
-        public PdfConcatenator(Stream outStream, PdfEncryptInfo encryptInfo, int viewerPreference)
-        {
-            if (encryptInfo == null)
-                Setup(outStream, 0, null, null, 0, viewerPreference);
-            else
-                Setup(outStream, encryptInfo.encryptionLength, encryptInfo.userPassword, encryptInfo.ownerPassword, encryptInfo.permissions, viewerPreference);
+            Setup(outStream, encryptInfo, viewerPreference);
         }
 
         public void Append(string url, PageRange[] pageRanges, PdfConcatenatorOption option)
         {
-            PdfReader reader = CreatePdfReader(url, option);
+            PdfDocument reader = CreatePdfReader(url, option);
             try
             {
                 Append(reader, Path.GetFileNameWithoutExtension(url), pageRanges, option);
@@ -68,9 +62,8 @@ namespace Ujihara.PDF
             }
         }
 
-        public void Append(PdfReader reader, string title, PageRange[] pageRanges, PdfConcatenatorOption option)
+        public void Append(PdfDocument reader, string title, PageRange[] pageRanges, PdfConcatenatorOption option)
         {
-            reader.ConsolidateNamedDestinations();
             pageRanges = NormalizePageRanges(reader, pageRanges);
 
             var thePageRangess = new List<PageRange[]>();
@@ -100,11 +93,11 @@ namespace Ujihara.PDF
             }
         }
 
-        private static PageRange[] NormalizePageRanges(PdfReader reader, PageRange[] pageRanges)
+        private static PageRange[] NormalizePageRanges(PdfDocument reader, PageRange[] pageRanges)
         {
             if (pageRanges == null)
             {
-                pageRanges = new[] { new PageRange(1, reader.NumberOfPages), };
+                pageRanges = new[] { new PageRange(1, reader.GetNumberOfPages()), };
             }
             else
             {
@@ -126,25 +119,26 @@ namespace Ujihara.PDF
             return pageRanges;
         }
 
-        private static int NormalizePageNumber(PdfReader reader, int start)
+        private static int NormalizePageNumber(PdfDocument reader, int start)
         {
             if (start == 0)
                 start = 1;
-            else if (start < 0)
-                start = reader.NumberOfPages + 1 + start;
-            else if (start > reader.NumberOfPages)
-                start = reader.NumberOfPages;
+            else if (start < 0) 
+                 start = reader.GetNumberOfPages() + 1 + start;
+            else if (start > reader.GetNumberOfPages())
+                start = reader.GetNumberOfPages();
             return start;
         }
 
-        private void AppendMain(PdfReader reader, string title, PageRange[] pageRanges, PdfConcatenatorOption option)
+        private void AppendMain(PdfDocument reader, string title, PageRange[] pageRanges, PdfConcatenatorOption option)
         {
             bool addOutlines = option.AddOutlines;
             bool copyOutlines = option.CopyOutlines;
 
             int i;
 
-            bool[] appendOrNots = new bool[reader.NumberOfPages + 1];
+            int numberOfPages = reader.GetNumberOfPages();
+            bool[] appendOrNots = new bool[numberOfPages + 1];
             foreach (var pr in pageRanges)
             {
                 for (int j = pr.StartPage; j <= pr.EndPage; j++)
@@ -152,7 +146,7 @@ namespace Ujihara.PDF
             }
 
             int theFirstPage = 0;
-            for (i = 1; i <= reader.NumberOfPages; i++)
+            for (i = 1; i <= numberOfPages; i++)
             {
                 if (appendOrNots[i])
                 {
@@ -166,68 +160,68 @@ namespace Ujihara.PDF
                 return;
             }
 
+            PdfOutline rootOutline = null;
             if (!opened)
             {
                 opened = true;
-                document = new Document(reader.GetPageSizeWithRotation(theFirstPage));
-                writer = new PdfCopy(document, outStream);
-                writer.SetMergeFields();
-
-                if (ownerPassword != null)
+                var prop = new WriterProperties();
+                if (EncryptInfo.OwnerPassword != null)
                 {
-                    byte[] bytesUserPassword = userPassword == null ? null : Encoding.ASCII.GetBytes(userPassword);
-                    writer.SetEncryption(bytesUserPassword, Encoding.ASCII.GetBytes(ownerPassword), permissions, encryptionStrength);
+                    byte[] bytesUserPassword = EncryptInfo.UserPassword == null ? null : Encoding.ASCII.GetBytes(EncryptInfo.UserPassword);
+                    prop.SetStandardEncryption(bytesUserPassword, Encoding.ASCII.GetBytes(EncryptInfo.OwnerPassword), EncryptInfo.Permission,  EncryptInfo.Encryption);
                 }
-                writer.ViewerPreferences = this.viewerPreference;
+                writer = new PdfWriter(outStream, prop);
+                document = new PdfDocument(writer);
+                rootOutline = document.GetOutlines(false);
+                merger = new PdfMerger(document, true, copyOutlines);
 
-                document.Open();
+                if (PageLayout != null)
+                    document.GetCatalog().SetPageLayout(PageLayout);
+                if (PageMode != null)
+                    document.GetCatalog().SetPageMode(PageMode);
+                if (ViewerPreference != null)
+                   document.GetCatalog().SetViewerPreferences(ViewerPreference);
             }
 
-            if (bookmarks == null)
-                if (addOutlines || copyOutlines)
-                    bookmarks = new List<Dictionary<string, object>>();
-            if (bookmarks != null)
+            if (addOutlines)
             {
-                Dictionary<string, object> m = null;
-                if (addOutlines)
+                PdfOutline outline = rootOutline.AddOutline(title);
+                var styleOption = option.FittingStyle.Split(' ');
+                var type = styleOption[0];
+                PdfExplicitDestination dest;
+                switch (type)
                 {
-                    m = new Dictionary<string, object>();
-                    m["Title"] = title;
-                    m["Action"] = "GoTo";
-                    m["Page"] = currPageNum.ToString() + " " + option.FittingStyle;
+                    case "Fit":
+                        dest = PdfExplicitDestination.CreateFit(currPageNum);
+                        break;
+                    case "FitB":
+                        dest = PdfExplicitDestination.CreateFitB(currPageNum);
+                        break;
+                    case "FitBH":
+                        dest = PdfExplicitDestination.CreateFitBH(currPageNum, float.Parse(styleOption[1]));
+                        break;
+                    case "FitBV":
+                        dest = PdfExplicitDestination.CreateFitBV(currPageNum, float.Parse(styleOption[1]));
+                        break;
+                    case "FitH":
+                        dest = PdfExplicitDestination.CreateFitH(currPageNum, float.Parse(styleOption[1]));
+                        break;
+                    case "FitR":
+                        dest = PdfExplicitDestination.CreateFitR(currPageNum, float.Parse(styleOption[1]), float.Parse(styleOption[2]), float.Parse(styleOption[3]), float.Parse(styleOption[4]));
+                        break;
+                    case "FitV":
+                        dest = PdfExplicitDestination.CreateFitV(currPageNum, float.Parse(styleOption[1]));
+                        break;
+                    case "XYZ":
+                        dest = PdfExplicitDestination.CreateXYZ(currPageNum, float.Parse(styleOption[1]), float.Parse(styleOption[2]), float.Parse(styleOption[3]));
+                        break;
+                    default:
+                        dest = null;
+                        break;
                 }
-                if (copyOutlines)
-                {
-                    var cpbookmarks = SimpleBookmark.GetBookmark(reader);
 
-                    if (cpbookmarks != null)
-                    {
-                        int[] elimPages = new int[2];
-                        int[] shiftPages = new int[2];
-                        shiftPages[1] = reader.NumberOfPages;
-                        for (int pageIndex = reader.NumberOfPages; pageIndex > 0; --pageIndex)
-                        {
-                            if (!appendOrNots[pageIndex])
-                            {
-                                elimPages[0] = elimPages[1] = pageIndex;
-                                shiftPages[0] = pageIndex + 1;
-                                SimpleBookmark.EliminatePages(cpbookmarks, elimPages);
-                                SimpleBookmark.ShiftPageNumbers(cpbookmarks, -1, shiftPages);
-                            }
-                        }
-                        SimpleBookmark.ShiftPageNumbers(cpbookmarks, currPageNum - 1, null);
-
-                        if (m == null)
-                        {
-                            foreach (var c in cpbookmarks)
-                                bookmarks.Add(c);
-                        }
-                        else
-                            m["Kids"] = cpbookmarks;
-                    }
-                }
-                if (m != null)
-                    bookmarks.Add(m);
+                if (dest != null)
+                    outline.AddDestination(dest);
             }
 
             {
@@ -235,20 +229,19 @@ namespace Ujihara.PDF
                 for (int ii = 1; ii < appendOrNots.Length; ii++)
                     if (appendOrNots[ii])
                         pages.Add(ii);
-                reader.SelectPages(pages);
-                writer.AddDocument(reader);
+                merger.Merge(reader, pages);
             }
         }
 
-        public PdfReader CreatePdfReader(string url, PdfConcatenatorOption option)
+        public PdfDocument CreatePdfReader(string url, PdfConcatenatorOption option)
         {
             var bytes = LibPDFTools.GetBytes(LibPDFTools.ToUri(url));
             return CreatePdfReader(bytes, option);
         }
 
-        public PdfReader CreatePdfReader(byte[] bytes, PdfConcatenatorOption option)
+        public PdfDocument CreatePdfReader(byte[] bytes, PdfConcatenatorOption option)
         {
-            PdfReader reader;
+            PdfDocument reader;
             switch (LibPDFTools.GetImageFileType(bytes))
             {
                 case ImageFileType.PDF:
@@ -266,8 +259,6 @@ namespace Ujihara.PDF
 
         public override void Dispose()
         {
-            if (bookmarks != null)
-                writer.Outlines = bookmarks;
             if (writer != null)
             {
                 try

@@ -15,14 +15,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using iText.Kernel.Pdf;
 using System;
 using System.Collections;
 using System.IO;
 using System.Text;
-
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using Ujihara.PDF;
 
 namespace Ujihara.ConcatPDF
 {
@@ -119,9 +116,12 @@ namespace Ujihara.ConcatPDF
 
 		public static void Decrypt(string EncryptedFileName, string DecryptedFileName, string Password)
 		{
-			PdfReader reader = new PdfReader(EncryptedFileName, Encoding.ASCII.GetBytes(Password));
-			PdfStamper stamper = new PdfStamper(reader, new FileStream(DecryptedFileName, FileMode.Create, FileAccess.Write));
-			stamper.Close();
+            var prop = new ReaderProperties();
+            prop.SetPassword(Encoding.ASCII.GetBytes(Password));
+            PdfReader reader = new PdfReader(EncryptedFileName, prop);
+            PdfDocument pdfDoc = new PdfDocument(reader, new PdfWriter(DecryptedFileName));
+            pdfDoc.Close();
+            reader.Close();
 		}
 	}
 }

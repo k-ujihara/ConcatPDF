@@ -15,13 +15,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. 
  */
 
+using iText.Kernel.Events;
+using iText.Kernel.Pdf;
 using System;
 using System.Collections;
 using System.IO;
 using System.Text;
-
-using iTextSharp.text.pdf;
 using Ujihara.PDF;
+using static iText.Kernel.Pdf.PdfViewerPreferences;
 
 namespace Ujihara.ConcatPDF
 {
@@ -30,9 +31,9 @@ namespace Ujihara.ConcatPDF
 		static Encoding encoding = Encoding.UTF8;
 		static PdfEncryptInfo encryptInfo = null;
 		static PdfConcatenatorOption appendOption = new PdfConcatenatorOption();
-		static int viewerPreference = 0;
+        static PageViewerPreferences viewerPreference = new PageViewerPreferences();
 
-		private static string CommandLineExample = "ConcatPDF [switches] {input-file}...";
+        private static string CommandLineExample = "ConcatPDF [switches] {input-file}...";
 
 		static void ShowUsage()
 		{
@@ -129,58 +130,129 @@ namespace Ujihara.ConcatPDF
 					}
 					else if (parm == "/security") 
 					{
-						string len = args[i++];
+						string len = args[i++].Trim().ToUpperInvariant();
 						string userPass = args[i++];
 						string ownerPass = args[i++];
-						encryptInfo = new PdfEncryptInfo(int.Parse(len), userPass, ownerPass, 0);
-						for (; i < args.Length; i++) 
-						{
-							string p = args[i].ToLower();
-							if (false) {}
-							else if (p == "printing") encryptInfo.permissions |= PdfWriter.AllowPrinting;
-							else if (p == "modify-contents") encryptInfo.permissions |= PdfWriter.AllowModifyContents;
-							else if (p == "copy") encryptInfo.permissions |= PdfWriter.AllowCopy;
-							else if (p == "modify-annotations") encryptInfo.permissions |= PdfWriter.AllowModifyAnnotations;
-							else if (p == "fill-in") encryptInfo.permissions |= PdfWriter.AllowFillIn;
-							else if (p == "screen-readers") encryptInfo.permissions |= PdfWriter.AllowScreenReaders;
-							else if (p == "assembly") encryptInfo.permissions |= PdfWriter.AllowAssembly;
-							else if (p == "degraded-printing") encryptInfo.permissions |= PdfWriter.AllowDegradedPrinting;
-							else 
-							{
-								break;
-							}
-						} 
+                        int permission = 0;
+                        int encryption = 0;
+                        #region Set encryption length
+                        {
+                            try
+                            {
+                                switch (len)
+                                {
+                                    case "40":
+                                        encryption |= EncryptionConstants.STANDARD_ENCRYPTION_40;
+                                        break;
+                                    case "128":
+                                        encryption |= EncryptionConstants.STANDARD_ENCRYPTION_128;
+                                        break;
+                                    case "AES128":
+                                        encryption |= EncryptionConstants.ENCRYPTION_AES_128;
+                                        break;
+                                    case "AES256":
+                                        encryption |= EncryptionConstants.ENCRYPTION_AES_256;
+                                        break;
+                                    default:
+                                        throw new Exception();
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                throw new Exception($"Illegal length: {len}");
+                            }
+                        }
+                        #endregion
+                        #region Set permission
+                        for (; i < args.Length; i++)
+                        {
+                            string p = args[i].ToLower();
+                            if (false) { }
+                            else if (p == "printing") permission |= EncryptionConstants.ALLOW_PRINTING;
+                            else if (p == "modify-contents") permission |= EncryptionConstants.ALLOW_MODIFY_CONTENTS;
+                            else if (p == "copy") permission |= EncryptionConstants.ALLOW_COPY;
+                            else if (p == "modify-annotations") permission |= EncryptionConstants.ALLOW_MODIFY_ANNOTATIONS;
+                            else if (p == "fill-in") permission |= EncryptionConstants.ALLOW_FILL_IN;
+                            else if (p == "screen-readers") permission |= EncryptionConstants.ALLOW_SCREENREADERS;
+                            else if (p == "assembly") permission |= EncryptionConstants.ALLOW_ASSEMBLY;
+                            else if (p == "degraded-printing") permission |= EncryptionConstants.ALLOW_DEGRADED_PRINTING;
+                            else
+                            {
+                                break;
+                            }
+                        }
+                        #endregion
+                        encryptInfo = new PdfEncryptInfo(permission, encryption, userPass, ownerPass);						
 					}
 					else if (parm == "/viewer")
 					{
-						for (; i < args.Length; i++)
-						{
-							string p = args[i].ToLower();
-							if (false) {}
-							else if (p == "page-layout-single-page") viewerPreference |= PdfWriter.PageLayoutSinglePage; //Display one page at a time.
-							else if (p == "page-layout-continuous") viewerPreference |= PdfWriter.PageLayoutOneColumn; // Display the pages in one column.
-							else if (p == "page-layout-continuous-facing-left") viewerPreference |= PdfWriter.PageLayoutTwoColumnLeft; //Display the pages in two columns, with oddnumbered pages on the left.
-							else if (p == "page-layout-continuous-facing" || p == "page-layout-continuous-facing-right") viewerPreference |= PdfWriter.PageLayoutTwoColumnRight; //Display the pages in two columns, with oddnumbered pages on the right.
-							else if (p == "page-mode-use-none") viewerPreference |= PdfWriter.PageModeUseNone; // Neither document outline nor thumbnail images visible.
-							else if (p == "page-mode-use-outlines") viewerPreference |= PdfWriter.PageModeUseOutlines; // Document outline visible.
-							else if (p == "page-mode-use-thumbs") viewerPreference |= PdfWriter.PageModeUseThumbs; // Thumbnail images visible.
-							else if (p == "page-mode-full-screen") viewerPreference |= PdfWriter.PageModeFullScreen; // Full-screen mode, with no menu bar, window  controls, or any other window visible.
-							else if (p == "hide-toolbar") viewerPreference |= PdfWriter.HideToolbar; // A flag specifying whether to hide the viewer application's toolbars when the document is active.
-							else if (p == "hide-menubar") viewerPreference |= PdfWriter.HideMenubar; // A flag specifying whether to hide the viewer application's menu bar when the document is active.
-							else if (p == "hide-window-ui") viewerPreference |= PdfWriter.HideWindowUI; // A flag specifying whether to hide user interface elements in the document's window (such as scroll bars and navigation controls), leaving only the document's contents displayed.
-							else if (p == "fit-window") viewerPreference |= PdfWriter.FitWindow; // A flag specifying whether to resize the document's window to fit the size of the first displayed page.
-							else if (p == "center-window" || p == "centre-window") viewerPreference |= PdfWriter.CenterWindow; // A flag specifying whether to position the document's window in the center of the screen.
-							else
-							{
-								break;
-							}
-						}
-						if ((viewerPreference & PdfWriter.PageModeFullScreen) != 0)
-						{
-							if ((viewerPreference & PdfWriter.PageModeUseNone) != 0) viewerPreference |= PdfWriter.NonFullScreenPageModeUseNone; // Neither document outline nor thumbnail images visible.
-							if ((viewerPreference & PdfWriter.PageModeUseOutlines) != 0) viewerPreference |= PdfWriter.NonFullScreenPageModeUseOutlines; // Document outline visible.
-							if ((viewerPreference & PdfWriter.PageModeUseThumbs) != 0) viewerPreference |= PdfWriter.NonFullScreenPageModeUseThumbs; // Thumbnail images visible.					
-						}
+                        for (; i < args.Length; i++)
+                        {
+                            #region Set viewer option
+                            string p = args[i].ToLower();
+                            switch (p)
+                            {
+                                case "page-layout-single-page":
+                                    //Display one page at a time.
+                                    viewerPreference.PageLayout = PdfName.SinglePage;
+                                    break;
+                                case "page-layout-continuous":
+                                    // Display the pages in one column.
+                                    viewerPreference.PageLayout = PdfName.OneColumn;
+                                    break;
+                                case "page-layout-continuous-facing-left":
+                                    //Display the pages in two columns, with oddnumbered pages on the left.
+                                    viewerPreference.PageLayout = PdfName.TwoColumnLeft;
+                                    break;
+                                case "page-layout-continuous-facing":
+                                case "page-layout-continuous-facing-right":
+                                    //Display the pages in two columns, with oddnumbered pages on the right.
+                                    viewerPreference.PageLayout = PdfName.TwoColumnRight;
+                                    break;
+                                case "page-mode-use-none":
+                                    // Neither document outline nor thumbnail images visible.
+                                    viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_NONE;
+                                    break;
+                                case "page-mode-use-outlines":
+                                    // Document outline visible.
+                                    viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_OUTLINES;
+                                    break;
+                                case "page-mode-use-thumbs":
+                                    // Thumbnail images visible.
+                                    viewerPreference.NonFullScreenPageMode = PdfViewerPreferencesConstants.USE_THUMBS;
+                                    break;
+                                case "page-mode-full-screen":
+                                    // Full-screen mode, with no menu bar, window  controls, or any other window visible.
+                                    viewerPreference.PageMode = PdfName.FullScreen;
+                                    break;
+                                case "hide-toolbar":
+                                    // A flag specifying whether to hide the viewer application's toolbars when the document is active.
+                                    viewerPreference.HideToolbar = true;
+                                    break;
+                                case "hide-menubar":
+                                    // A flag specifying whether to hide the viewer application's menu bar when the document is active.
+                                    viewerPreference.HideMenubar = true;
+                                    break;
+                                case "hide-window-ui":
+                                    // A flag specifying whether to hide user interface elements in the document's window (such as scroll bars and navigation controls), leaving only the document's contents displayed.
+                                    viewerPreference.HideWindowUI = true;
+                                    break;
+                                case "fit-window":
+                                    // A flag specifying whether to resize the document's window to fit the size of the first displayed page.
+                                    viewerPreference.FitWindow = true;
+                                    break;
+                                case "center-window":
+                                case "centre-window":
+                                    // A flag specifying whether to position the document's window in the center of the screen.
+                                    viewerPreference.CenterWindow = true;
+                                    break;
+                                default:
+                                    goto L1000;
+                            }
+                            #endregion
+                        }
+                    L1000:
+                        ;
 					}
 					else if (parm == "/add-outlines")
 					{
@@ -189,18 +261,29 @@ namespace Ujihara.ConcatPDF
                     else if (parm == "/fitting")
                     {
                         string s = args[i++];
-                        if (false) { }
-                        else if (s.Equals("XYZ"))
-                            s = "/" + s + " null null null";
-                        else if (s.Equals("Fit") || s.Equals("FitB"))
-                            s = "/" + s;
-                        else if (s.Equals("FitH") || s.Equals("FitV") || s.Equals("FitBH") || s.Equals("FitBV"))
-                            s = "/" + s + " null";
-                        else if (s.Equals("FitR"))
-                            s = "/" + s + " null null null null";
-                        else
-                            if (s[0] != '/')
+                        switch (s)
+                        {
+                            case "XYZ":
+                                s = "/" + s + " null null null";
+                                break;
+                            case "Fit":
+                            case "FitB":
                                 s = "/" + s;
+                                break;
+                            case "FitH":
+                            case "FitV":
+                            case "FitBH":
+                            case "FitBV":
+                                s = "/" + s + " null";
+                                break;
+                            case "FitR":
+                                s = "/" + s + " null null null null";
+                                break;
+                            default:
+                                if (s.Length > 0 && s[0] != '/')
+                                    s = "/" + s;
+                                break;
+                        }
                         appendOption.FittingStyle = s;
                     }
                     else if (parm == "/copy-outlines")

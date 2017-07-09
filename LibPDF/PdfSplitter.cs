@@ -15,11 +15,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System.IO;
 using System.Collections.Generic;
 using System;
+using iText.Kernel.Pdf;
+using static iText.Kernel.Utils.PdfSplitter;
+using iText.IO.Source;
 
 namespace Ujihara.PDF
 {
@@ -69,60 +70,44 @@ namespace Ujihara.PDF
 
         private string[] SplitPdf(string url, string splittedFilesDirectoryName, string prefixOfFileName)
         {
-            PdfReader reader = LibPDFTools.CreatePdfReader(url, QueryPassword, false);
+            var bytes = LibPDFTools.GetBytes(url);
+
+            PdfDocument reader = LibPDFTools.CreatePdfReader(bytes, QueryPassword, false);
             try
             {
-                reader.ConsolidateNamedDestinations();
-                IList<Dictionary<string, object>> bookmarks = SimpleBookmark.GetBookmark(reader);
-                int numberOfPages = reader.NumberOfPages;
-                string[] splittedFiles = new string[numberOfPages];
                 Directory.CreateDirectory(splittedFilesDirectoryName);
-
-                for (int i = 1; i <= numberOfPages; i++)
-                {
-                    string splittedFile = Path.Combine(splittedFilesDirectoryName, prefixOfFileName + i.ToString("D10") + ".pdf");
-                    splittedFiles[i - 1] = splittedFile;
-
-                    //extract bookmarks on the page
-                    IList<Dictionary<string, object>> bookmark = null;
-                    if (bookmarks != null)
-                    {
-                        bookmark = new List<Dictionary<string, object>>(bookmarks);
-                        int[] rs;
-                        rs = new int[4];
-                        rs[0] = 1;
-                        rs[1] = i - 1;
-                        rs[2] = i + 1;
-                        rs[3] = numberOfPages;
-                        SimpleBookmark.EliminatePages(bookmark, rs);
-                        rs = new int[2];
-                        rs[0] = rs[1] = i;
-                        SimpleBookmark.ShiftPageNumbers(bookmark, 1 - i, rs);
-                    }
-
-                    using (var document = new Document(reader.GetPageSizeWithRotation(i)))
-                    {
-                        using (var outStream = new FileStream(splittedFile, FileMode.Create, FileAccess.Write))
-                        {
-                            using (var writer = new PdfCopy(document, outStream))
-                            {
-                                document.Open();
-                                PdfImportedPage page = writer.GetImportedPage(reader, i);
-                                writer.AddPage(page);
-                                if (bookmark != null)
-                                    writer.Outlines = bookmark;
-                                writer.Close();
-                            }
-                            outStream.Close();
-                        }
-                        document.Close();
-                    }
-                }
-                return splittedFiles;
+                var listener = new DocumentReadyListener(splittedFilesDirectoryName, prefixOfFileName);
+                new iText.Kernel.Utils.PdfSplitter(reader).SplitByPageCount(1, listener);
+                return listener.Files.ToArray();
             }
             finally
             {
                 reader.Close();
+            }
+        }
+
+        class DocumentReadyListener : IDocumentReadyListener
+        {
+            public string SplittedFilesDirectoryName { get; }
+            public string PrefixOfFileName { get; }
+            int i = 1;
+            public List<string> Files { get; } = new List<string>();
+
+            public DocumentReadyListener(string splittedFilesDirectoryName, string prefixOfFileName)
+            {
+                this.SplittedFilesDirectoryName = splittedFilesDirectoryName;
+                this.PrefixOfFileName = prefixOfFileName;
+            }
+
+            public void DocumentReady(PdfDocument pdfDocument, iText.Kernel.Utils.PageRange pageRange)
+            {
+                var bytes = ((ByteArrayOutputStream)pdfDocument.GetWriter().GetOutputStream()).ToArray();
+                string splittedFile = Path.Combine(SplittedFilesDirectoryName, PrefixOfFileName + i.ToString("D10") + ".pdf");
+                using (var ms = new FileStream(splittedFile, FileMode.Create, FileAccess.Write))
+                {
+                    ms.Write(bytes, 0, bytes.Length);
+                    Files.Add(splittedFile);
+                }
             }
         }
 

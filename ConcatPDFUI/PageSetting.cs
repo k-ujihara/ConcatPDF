@@ -5,13 +5,11 @@
  * You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
+using iText.Kernel.Geom;
 using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Ujihara.PDF;
-using iTextSharp.text;
 
 namespace Ujihara.ConcatPDF
 {
@@ -237,11 +235,18 @@ namespace Ujihara.ConcatPDF
             }
         }
 
-        private iTextSharp.text.Rectangle ToPageSize(string text)
+        private PageSize ToPageSize(string text)
         {
             if (text == null || text == string.Empty)
                 return null;
-            return PageSize.GetRectangle(text);
+            switch (text)
+            {
+                //TODO
+                case "A4":
+                    return PageSize.A4;
+                default:
+                    return null;
+            }
         }
 
         private void comboPageSize_Validated(object sender, EventArgs e)

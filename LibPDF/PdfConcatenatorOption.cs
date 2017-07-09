@@ -15,7 +15,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using iTextSharp.text;
+using iText.Kernel.Font;
+using iText.Kernel.Geom;
 
 namespace Ujihara.PDF
 {
@@ -25,12 +26,12 @@ namespace Ujihara.PDF
         public bool CopyOutlines { get; set; }
         public string FittingStyle { get; set; }
         public Margins Margins { get; set; }
-        public Font Font { get; set; }
+        public PdfFont Font { get; set; }
         public string Charset { get; set; }
         //private Color backgroundColor = null;
         //private WatermarkIdent watermark = null;
         private string paperName = null;
-        private Rectangle pageSize = null; // not defined
+        private PageSize pageSize = null; // not defined
         public bool Landscape { get; set; }
 
         public PdfConcatenatorOption()
@@ -55,7 +56,7 @@ namespace Ujihara.PDF
             }
         }
 
-        public void SetPageSize(Rectangle pageSize)
+        public void SetPageSize(PageSize pageSize)
         {
             if (pageSize == null)
             {
@@ -63,11 +64,11 @@ namespace Ujihara.PDF
             }
             else
             {
-                SetPageSize(pageSize.Width + " " + pageSize.Height, pageSize);
+                SetPageSize(pageSize.GetWidth() + " " + pageSize.GetHeight(), pageSize);
             }
         }
 
-        public void SetPageSize(string paperName, Rectangle pageSize)
+        public void SetPageSize(string paperName, PageSize pageSize)
         {
             this.paperName = paperName;
             this.pageSize = pageSize;
@@ -81,11 +82,11 @@ namespace Ujihara.PDF
             }
         }
 
-        public Rectangle GetBounds()
+        public PageSize GetBounds()
         {
-            Rectangle pageSize = this.pageSize;
+            PageSize pageSize = this.pageSize;
             if (this.Landscape)
-                pageSize = pageSize.Rotate();
+                pageSize = new PageSize(PageSize.GetHeight(), pageSize.GetWidth());
             return pageSize;
         }
     }
