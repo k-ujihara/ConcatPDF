@@ -21,8 +21,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 using System.Diagnostics;
-
-using System.Linq;
 using System.IO;
 using System.Text;
 using Microsoft.Win32;
