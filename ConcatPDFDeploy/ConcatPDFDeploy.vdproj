@@ -27,44 +27,44 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "OwnerKey" = "8:_6CFB2FC93F21804B985913E4947D9786"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
-        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
+        "MsmKey" = "8:_6CFB2FC93F21804B985913E4947D9786"
         "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
-        "OwnerKey" = "8:_B41325F6FCAC340251DCD52DC6A1C2FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
-        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
-        "OwnerKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -75,31 +75,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
-        "OwnerKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
+        "MsmKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
+        "OwnerKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
+        "MsmKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
         "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
+        "MsmKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
         "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
+        "MsmKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
         "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
+        "MsmKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
         "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -123,8 +123,38 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B41325F6FCAC340251DCD52DC6A1C2FA"
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
+        "OwnerKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
         "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
+        "OwnerKey" = "8:_6CFB2FC93F21804B985913E4947D9786"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
+        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -137,36 +167,6 @@
         {
         "MsmKey" = "8:_C325279A156C45779008079AB4881BD4"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-        "OwnerKey" = "8:_B41325F6FCAC340251DCD52DC6A1C2FA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,7 +202,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B41325F6FCAC340251DCD52DC6A1C2FA"
+        "OwnerKey" = "8:_6CFB2FC93F21804B985913E4947D9786"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,19 +214,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
+        "OwnerKey" = "8:_43F2CF5E0383184A089AA8F146F6E006"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9C8705FE729BF856938F105BC9F83B5C"
+        "OwnerKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6D68824D2EAB8B3067EAB57C4934FA02"
+        "OwnerKey" = "8:_7D0CDF3469E0EA5E8F1ADA8E32760184"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -326,7 +326,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:3.5.21022"
+                "FrameworkVersion" = "8:3.5.21022 "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -374,20 +374,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6D68824D2EAB8B3067EAB57C4934FA02"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_43F2CF5E0383184A089AA8F146F6E006"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.2.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:LibPDF, Version=1.2.6414.24156, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_6D68824D2EAB8B3067EAB57C4934FA02"
+                    "_43F2CF5E0383184A089AA8F146F6E006"
                     {
-                    "Name" = "8:itextsharp.dll"
+                    "Name" = "8:LibPDF.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:itextsharp.dll"
+            "SourcePath" = "8:LibPDF.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
@@ -405,14 +405,45 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9C8705FE729BF856938F105BC9F83B5C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6CFB2FC93F21804B985913E4947D9786"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ConcatPDFUI, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_6CFB2FC93F21804B985913E4947D9786"
+                    {
+                    "Name" = "8:ConcatPDFUI.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ConcatPDFUI.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7D0CDF3469E0EA5E8F1ADA8E32760184"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:PDFLibNet, Version=1.0.6.6, Culture=neutral, PublicKeyToken=26d87f7d66fb2aee, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_9C8705FE729BF856938F105BC9F83B5C"
+                    "_7D0CDF3469E0EA5E8F1ADA8E32760184"
                     {
                     "Name" = "8:PDFLibNet.dll"
                     "Attributes" = "3:512"
@@ -456,20 +487,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B41325F6FCAC340251DCD52DC6A1C2FA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B696B3A4CD396AD75F227C50E79EF1D7"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ConcatPDFUI, Version=1.0.4564.28307, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_B41325F6FCAC340251DCD52DC6A1C2FA"
+                    "_B696B3A4CD396AD75F227C50E79EF1D7"
                     {
-                    "Name" = "8:ConcatPDFUI.dll"
+                    "Name" = "8:itextsharp.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:ConcatPDFUI.dll"
+            "SourcePath" = "8:itextsharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
@@ -525,37 +556,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LibPDF, Version=1.2.4564.28306, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_DB7EDF86D46E9B719FCFB4EB60F7DF2B"
-                    {
-                    "Name" = "8:LibPDF.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:LibPDF.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF10F2F02C9845DDA5F970F5D6BBA3FC"
@@ -675,24 +675,25 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ConcatPDF 1.2.5"
-        "ProductCode" = "8:{25E96E7C-439F-48A5-A4FB-55AF5B2E650F}"
-        "PackageCode" = "8:{ABF6189E-C028-48A8-AD85-104CCF8A412E}"
+        "ProductName" = "8:ConcatPDF 1.3.0"
+        "ProductCode" = "8:{6D73D6C4-6FC7-460A-93E1-158E027E5776}"
+        "PackageCode" = "8:{12078BBF-B854-431D-BD51-429B6F1958C0}"
         "UpgradeCode" = "8:{C8E7126C-B0CA-46C5-AD79-61AC6C913738}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.2.5"
-        "Manufacturer" = "8:Ujihara"
+        "ProductVersion" = "8:1.3.0"
+        "Manufacturer" = "8:Kazuya Ujihara"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:http://www.ujihara.jp/ConcatPDF/"
+        "ARPHELPLINK" = "8:https://github.com/kazuyaujihara/ConcatPDF"
         "Title" = "8:ConcatPDF Installer File"
         "Subject" = "8:PDF file concatenation tool."
         "ARPCONTACT" = "8:Kazuya Ujihara"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:http://www.ujihara.jp/"
+        "ARPURLINFOABOUT" = "8:https://kazuyaujihara.github.io/"
         "ARPPRODUCTICON" = "8:_FC711A944765458DAC4CE4445B5156EF"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -859,7 +860,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_66DE1915947B475B86AF98090A04E0DB"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:インストール フォルダ"
+                    "DisplayName" = "8:インストール フォルダー"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -1063,7 +1064,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_76EED7A385934771BD3574AD5277D4E4"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:インストール フォルダ"
+                    "DisplayName" = "8:インストール フォルダー"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"

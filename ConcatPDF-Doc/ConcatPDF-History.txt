@@ -1,5 +1,7 @@
 ConcatPDF history
 
+1.3.0 (2017-07-23)
+		Update iText library (iText5)
 1.2.5 (2012-06-30)
 	GUI version
 		Preview window.
