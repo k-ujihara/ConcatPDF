@@ -234,7 +234,10 @@ namespace Ujihara.PDF
                 var pages = new List<int>();
                 for (int ii = 1; ii < appendOrNots.Length; ii++)
                     if (appendOrNots[ii])
+                    {
                         pages.Add(ii);
+                        currPageNum++;
+                    }
                 reader.SelectPages(pages);
                 writer.AddDocument(reader);
             }

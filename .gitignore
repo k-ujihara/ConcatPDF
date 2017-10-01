@@ -290,5 +290,6 @@ __pycache__/
 # for ConcatPDF
 *.bat
 *.zip
+*.tmp
 arc_maker/
 !dll/PDFLibNet.dll
