@@ -5,12 +5,12 @@ Sorry this file is written in Japanese. English summary is written in the follow
 
  ソフト名 ：ConcatPDF
    機能   ：PDFファイルの結合
-ファイル名：ConcatPDF-1.2.4.zip
+ファイル名：ConcatPDF-1.3.1.zip
   対応OS  ：Windows 7/8/10
  動作確認 ：Windows 7 Professional
   作成者  ：氏原　一哉　(Kazuya UJIHARA)
   公開日  ：2004-01-14
-  更新日  ：2017-07-23
+  更新日  ：2017-10-01
 ソフト種別：フリーソフト
   E-Mail  ：mailto:ujihara@aurora.dti.ne.jp?subject=ConcatPDF
     HP    ：http://kazuyaujihara.github.io/ConcatPDF/
