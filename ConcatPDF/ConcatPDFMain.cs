@@ -22,6 +22,7 @@ using System.Text;
 
 using iTextSharp.text.pdf;
 using Ujihara.PDF;
+using System.Collections.Generic;
 
 namespace Ujihara.ConcatPDF
 {
@@ -212,6 +213,7 @@ namespace Ujihara.ConcatPDF
                         if (concatenatedFileStream == null)
                             throw new Exception("Missing outfile.");
                         PdfConcatenator con = new PdfConcatenator(concatenatedFileStream, encryptInfo, viewerPreference);
+                        var readers = new List<PdfReader>();
                         try
                         {
                             --i;
@@ -254,13 +256,17 @@ namespace Ujihara.ConcatPDF
                                         pageRanges[k] = new PageRange(start, end);
                                     }
                                 }
-                                con.Append(UriGetFullPath(fileName), pageRanges, appendOption);
+                                PdfReader reader = con.CreatePdfReader(fileName, appendOption);
+                                readers.Add(reader);
+                                con.Append(reader, Path.GetFileNameWithoutExtension(fileName), pageRanges, appendOption);
                             }
                         }
                         finally
                         {
                             con.Close();
                             concatenatedFileStream.Close();
+                            foreach (PdfReader reader in readers)
+                                reader.Close();
                         }
                         return 0;
                     }
