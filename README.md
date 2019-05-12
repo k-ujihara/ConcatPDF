@@ -11,4 +11,4 @@ ConcatPDF is a tool to concatenate PDF files. It can do the followings in one op
 
 GUI version and CUI version are both available. 
 
-Copyright 2004-2017 Kazuya Ujihara
+Copyright 2004-2019 Kazuya Ujihara

@@ -5,17 +5,14 @@ Sorry this file is written in Japanese. English summary is written in the follow
 
  ソフト名 ：ConcatPDF
    機能   ：PDFファイルの結合
-ファイル名：ConcatPDF-1.3.2.zip
+ファイル名：ConcatPDF-1.4.0.zip
   対応OS  ：Windows 7/8/10
- 動作確認 ：Windows 7 Professional
   作成者  ：氏原　一哉　(Kazuya UJIHARA)
   公開日  ：2004-01-14
-  更新日  ：2017-10-05
+  更新日  ：2019-05-12
 ソフト種別：フリーソフト
-  E-Mail  ：mailto:ujihara@aurora.dti.ne.jp?subject=ConcatPDF
     HP    ：http://kazuyaujihara.github.io/ConcatPDF/
- サポート ：作者宛にメール
- 転載条件 ：作者に連絡
+ サポート ：https://github.com/kazuyaujihara/ConcatPDF/issues
 ライセンス：GPL
 
 説明
@@ -32,22 +29,8 @@ PDF の1ページごとへの分割 （SplitPDF）
 
 CUI バージョンと GUI バージョンがあります。
 
-必須ソフトの入手先
-
-Microsoft .NET Framework Version 3.5 再頒布可能パッケージ --- http://www.microsoft.com/downloads/details.aspx?familyid=333325FD-AE52-4E35-B531-508D977D32A6
-
 インストール方法
 
-　1. ConcatPDF-???.zip を復号する。
-　2. Setup.exe を実行する。
+　ConcatPDF-???.zip の中の Setup.exe を実行する。
 
-免責
-
-　無保証です。
-
-その他
-
-　ご意見は、mailto:ujihara@aurora.dti.ne.jp?subject=ConcatPDF まで
-　
-
-Copyright(c) UJIHARA Kazuya 2004-2017. All rights reserved.
+Copyright(c) UJIHARA Kazuya 2004-2019. All rights reserved.

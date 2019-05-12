@@ -15,6 +15,36 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
+        "OwnerKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
+        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
+        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_28D21D071C824436A517F28F56C441DD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,12 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_51760B3EC1713F63294F180E01F46771"
-        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -41,6 +65,54 @@
         {
         "MsmKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7650A5530F59220916E5D58715E83E83"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_A4E4C53D1326C3D6A733D9D624F963EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_82F64645A8F798495A5063998F506944"
+        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A4E4C53D1326C3D6A733D9D624F963EC"
+        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -63,110 +135,44 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_51760B3EC1713F63294F180E01F46771"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "OwnerKey" = "8:_51760B3EC1713F63294F180E01F46771"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BAF964C51B44453FA6DC85A091806E40"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C325279A156C45779008079AB4881BD4"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
-        "OwnerKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
+        "MsmKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
         "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
-        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
+        "MsmKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
         "OwnerKey" = "8:_AD7B26E0C5F94FC8953BAA473A61A875"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "MsmKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "OwnerKey" = "8:_A4E4C53D1326C3D6A733D9D624F963EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "OwnerKey" = "8:_7029DC6FFC454F4E9F3C355601EFA5B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C325279A156C45779008079AB4881BD4"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,31 +196,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D72D6088CE7876A34BE4CD117378A48E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B696B3A4CD396AD75F227C50E79EF1D7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B6B50664CF8E7169F4FB36E2AD95140C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_51760B3EC1713F63294F180E01F46771"
+        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -226,7 +208,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B0DBD6B24A0E4DBC958B549822910E1C"
+        "OwnerKey" = "8:_A4E4C53D1326C3D6A733D9D624F963EC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7650A5530F59220916E5D58715E83E83"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_522B1048AE6A4759999BBDD76A941C2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BEAB05698E9BBA38288048D6FA790BA0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_82F64645A8F798495A5063998F506944"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_01F395A417AC0919F28CEB2925FEFE00"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -326,7 +338,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022    "
+                "FrameworkVersion" = "8:3.5.21022      "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -334,6 +346,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_01F395A417AC0919F28CEB2925FEFE00"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:PDFLibNet, Version=1.0.6.6, Culture=neutral, PublicKeyToken=26d87f7d66fb2aee, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_01F395A417AC0919F28CEB2925FEFE00"
+                    {
+                    "Name" = "8:PDFLibNet.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:PDFLibNet.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_28D21D071C824436A517F28F56C441DD"
             {
             "SourcePath" = "8:..\\ConcatPDF-Doc\\ConcatPDF-Helpen.html"
@@ -374,13 +417,80 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_51760B3EC1713F63294F180E01F46771"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7650A5530F59220916E5D58715E83E83"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ConcatPDFUI, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_7650A5530F59220916E5D58715E83E83"
+                    {
+                    "Name" = "8:itextsharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:itextsharp.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_82F64645A8F798495A5063998F506944"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_82F64645A8F798495A5063998F506944"
+                    {
+                    "Name" = "8:itextsharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:itextsharp.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A4E4C53D1326C3D6A733D9D624F963EC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ConcatPDFUI, Version=1.3.4.0, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A4E4C53D1326C3D6A733D9D624F963EC"
+                    {
+                    "Name" = "8:ConcatPDFUI.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ConcatPDFUI.dll"
             "TargetName" = "8:"
@@ -420,58 +530,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B696B3A4CD396AD75F227C50E79EF1D7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:itextsharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B6B50664CF8E7169F4FB36E2AD95140C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:LibPDF, Version=1.2.6483.31128, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:LibPDF.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BAF964C51B44453FA6DC85A091806E40"
             {
             "SourcePath" = "8:..\\ConcatPDF-Doc\\ConcatPDF-Help.html"
@@ -492,6 +550,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BEAB05698E9BBA38288048D6FA790BA0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:LibPDF, Version=1.2.7071.29171, Culture=neutral, PublicKeyToken=bd3736a929f259c3, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BEAB05698E9BBA38288048D6FA790BA0"
+                    {
+                    "Name" = "8:LibPDF.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:LibPDF.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C325279A156C45779008079AB4881BD4"
             {
             "SourcePath" = "8:..\\ConcatPDF-Doc\\ConcatPDF-Helpja.html"
@@ -510,32 +599,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D72D6088CE7876A34BE4CD117378A48E"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:PDFLibNet, Version=1.0.6.6, Culture=neutral, PublicKeyToken=26d87f7d66fb2aee, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:PDFLibNet.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_BA8C64C140644496B7536D2D0C9A9670"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF10F2F02C9845DDA5F970F5D6BBA3FC"
@@ -655,16 +718,16 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ConcatPDF 1.3.2"
-        "ProductCode" = "8:{619AFD0F-F38E-4901-A0F9-E9C49BE20431}"
-        "PackageCode" = "8:{62498591-7901-45FB-AF8B-7DF94D58A64D}"
+        "ProductName" = "8:ConcatPDF 1.4.0"
+        "ProductCode" = "8:{1994E9CD-0D29-4EC7-A535-2C527545E18C}"
+        "PackageCode" = "8:{909E3F22-5FEC-46F6-9D64-E165D4D12534}"
         "UpgradeCode" = "8:{C8E7126C-B0CA-46C5-AD79-61AC6C913738}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.3.2"
+        "ProductVersion" = "8:1.4.0"
         "Manufacturer" = "8:Kazuya Ujihara"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://kazuyaujihara.github.io/ConcatPDF"
@@ -818,7 +881,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_29DD1BD57C7540399491C4D70DEEB77D"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:インストールの確認"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -840,7 +903,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_66DE1915947B475B86AF98090A04E0DB"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:インストール フォルダー"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -862,7 +925,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_86238A160FEE4BA297ABE080A082F5A8"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:ようこそ"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -919,7 +982,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_89123E35FAAE41F48271FBA165EE0F52"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:完了"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -963,7 +1026,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_82E6F4575B124D0E9B8F1D846ADC666F"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:完了"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -994,7 +1057,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_2FC8FD38B19A4850A4622513DD1A65F7"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:進行状況"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -1044,7 +1107,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_76EED7A385934771BD3574AD5277D4E4"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:インストール フォルダー"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -1079,7 +1142,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_C35D46499552461799E53B36B32DF829"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:インストールの確認"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1101,7 +1164,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E42548F10F7A4E168406C769E61EE228"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:ようこそ"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -1164,7 +1227,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9E1082B2C1634FDAA0C4A9E6E0A314C7"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:進行状況"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -1234,7 +1297,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_522B1048AE6A4759999BBDD76A941C2B"
             {
-            "SourcePath" = "8:..\\SplitPDF\\obj\\x86\\Debug\\SplitPDF.exe"
+            "SourcePath" = "8:..\\SplitPDF\\obj\\Debug\\SplitPDF.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
@@ -1290,7 +1353,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7029DC6FFC454F4E9F3C355601EFA5B5"
             {
-            "SourcePath" = "8:..\\ConcatPDF\\obj\\x86\\Debug\\ConcatPDF.exe"
+            "SourcePath" = "8:..\\ConcatPDF\\obj\\Debug\\ConcatPDF.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
@@ -1318,7 +1381,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AD7B26E0C5F94FC8953BAA473A61A875"
             {
-            "SourcePath" = "8:..\\ConcatPDFW\\obj\\x86\\Debug\\ConcatPDFW.exe"
+            "SourcePath" = "8:..\\ConcatPDFW\\obj\\Debug\\ConcatPDFW.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
@@ -1346,7 +1409,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B0DBD6B24A0E4DBC958B549822910E1C"
             {
-            "SourcePath" = "8:..\\DecryptPDF\\obj\\x86\\Debug\\DecryptPDF.exe"
+            "SourcePath" = "8:..\\DecryptPDF\\obj\\Debug\\DecryptPDF.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_8C18412F955C4C4F8667EF5BDFE9AB30"
