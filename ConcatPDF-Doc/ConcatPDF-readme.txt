@@ -9,7 +9,7 @@ Sorry this file is written in Japanese. English summary is written in the follow
   対応OS  ：Windows 7/8/10
   作成者  ：氏原　一哉　(Kazuya UJIHARA)
   公開日  ：2004-01-14
-  更新日  ：2019-05-12
+  更新日  ：2019-05-14
 ソフト種別：フリーソフト
     HP    ：http://kazuyaujihara.github.io/ConcatPDF/
  サポート ：https://github.com/kazuyaujihara/ConcatPDF/issues

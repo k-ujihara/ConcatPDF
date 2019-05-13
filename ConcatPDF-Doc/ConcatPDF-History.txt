@@ -1,7 +1,7 @@
 ConcatPDF history
 
-(2019-05-12)
-		Update .NET Framework and iText library
+1.4.0 (2019-05-14)
+		Migrate to .NET Framework 4.6.1 and update iText library
 1.3.3 (2018-01-28)
 		Update iText library
 1.3.2 (2017-10-05)
